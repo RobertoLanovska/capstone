@@ -33,6 +33,16 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
+## To update files locally and push them to GitHub
+
+- **git add .**
+- **git commit -m "Deskripsi perubahan"**
+- **git push**
+
+## To fetch updates from GitHub:
+
+- **git pull**
+
 ### Premium Partners
 
 - **[Vehikl](https://vehikl.com)**
