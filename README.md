@@ -35,6 +35,7 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 ## To update files locally and push them to GitHub
 
+- **git status**
 - **git add .**
 - **git commit -m "Deskripsi perubahan"**
 - **git push**
