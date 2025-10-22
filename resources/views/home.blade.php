@@ -2,6 +2,7 @@
     <x-beranda.beranda1 />
     <x-beranda.sambutan />
     <x-beranda.vnv />
-    <x-beranda.galerih />
+    <x-beranda.prestasih />
+    <x-beranda.beritah />
 </x-layout>
 
