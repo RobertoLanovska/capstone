@@ -11,13 +11,11 @@
       </p>
     </div>
 
-    <!-- Grid berita -->
     <div id="berita-container" class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Card berita -->
       <div class="bg-white border rounded-xl overflow-hidden shadow hover:shadow-lg transition duration-300">
-        <img src="https://i.pinimg.com/originals/bd/3a/92/bd3a92f6e829b0d35e0214a09f7ee04d.jpg"
-             alt="Prestasi siswa"
-             class="w-full h-52 object-cover">
+        <img src="https://i.pinimg.com/originals/bd/3a/92/bd3a92f6e829b0d35e0214a09f7ee04d.jpg" alt="Prestasi siswa"
+          class="w-full h-52 object-cover">
         <div class="p-6">
           <div class="flex items-center text-sm text-gray-500 mb-3 space-x-4">
             <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">Pendidikan</span>
@@ -31,10 +29,9 @@
           </p>
           <a href="#" class="text-blue-600 font-semibold flex items-center hover:underline">
             Baca Selengkapnya
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                 stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-4 h-4 ml-1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
             </svg>
           </a>
         </div>
@@ -42,9 +39,8 @@
 
       <!-- Card 2 -->
       <div class="bg-white border rounded-xl overflow-hidden shadow hover:shadow-lg transition duration-300">
-        <img src="https://i.pinimg.com/originals/38/27/24/3827241979a0931e5a22a6e4b6a43a35.jpg"
-             alt="Kegiatan siswa"
-             class="w-full h-52 object-cover">
+        <img src="https://i.pinimg.com/originals/38/27/24/3827241979a0931e5a22a6e4b6a43a35.jpg" alt="Kegiatan siswa"
+          class="w-full h-52 object-cover">
         <div class="p-6">
           <div class="flex items-center text-sm text-gray-500 mb-3 space-x-4">
             <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">Kegiatan</span>
@@ -58,10 +54,9 @@
           </p>
           <a href="#" class="text-blue-600 font-semibold flex items-center hover:underline">
             Baca Selengkapnya
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                 stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-4 h-4 ml-1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
             </svg>
           </a>
         </div>
@@ -69,9 +64,8 @@
 
       <!-- Card 3 -->
       <div class="bg-white border rounded-xl overflow-hidden shadow hover:shadow-lg transition duration-300">
-        <img src="https://i.pinimg.com/originals/7f/9b/aa/7f9baa20a11de6b8f85f6c758bbbc3ef.jpg"
-             alt="Inovasi siswa"
-             class="w-full h-52 object-cover">
+        <img src="https://i.pinimg.com/originals/7f/9b/aa/7f9baa20a11de6b8f85f6c758bbbc3ef.jpg" alt="Inovasi siswa"
+          class="w-full h-52 object-cover">
         <div class="p-6">
           <div class="flex items-center text-sm text-gray-500 mb-3 space-x-4">
             <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-semibold">Inovasi</span>
@@ -85,10 +79,9 @@
           </p>
           <a href="#" class="text-blue-600 font-semibold flex items-center hover:underline">
             Baca Selengkapnya
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                 stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-4 h-4 ml-1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
             </svg>
           </a>
         </div>
