@@ -37,7 +37,7 @@
                             <a href="/tentang/profile" class="block px-5 py-3 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 hover:text-green-700 transition-all duration-200 transform hover:translate-x-2 border-l-4 border-transparent hover:border-green-600">Profile Sekolah</a>
                             <a href="/tentang/guru" class="block px-5 py-3 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 hover:text-green-700 transition-all duration-200 transform hover:translate-x-2 border-l-4 border-transparent hover:border-green-600">Guru</a>
                             <a href="/tentang/ekstra" class="block px-5 py-3 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 hover:text-green-700 transition-all duration-200 transform hover:translate-x-2 border-l-4 border-transparent hover:border-green-600">Ekstrakurikuler</a>
-                            <a href="/tentang/sarpras" class="block px-5 py-3 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 hover:text-green-700 transition-all duration-200 transform hover:translate-x-2 border-l-4 border-transparent hover:border-green-600">Sarana dan Prasarana</a>
+                            <a href="/tentang/fasilitas" class="block px-5 py-3 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 hover:text-green-700 transition-all duration-200 transform hover:translate-x-2 border-l-4 border-transparent hover:border-green-600">Sarana dan Prasarana</a>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                     </div>
                 </div>
 
-                <a href="/ppdb" class="px-5 lg:px-6 py-3 bg-white text-green-800 rounded-lg hover:bg-green-50 transition-all duration-300 font-bold shadow-md hover:shadow-xl transform hover:scale-105 active:scale-95 ml-2 ring-2 ring-white/30">
+                <a href="/ppdb/ppdb" class="px-5 lg:px-6 py-3 bg-white text-green-800 rounded-lg hover:bg-green-50 transition-all duration-300 font-bold shadow-md hover:shadow-xl transform hover:scale-105 active:scale-95 ml-2 ring-2 ring-white/30">
                     PPDB
                 </a>
             </div>
@@ -93,7 +93,7 @@
                     <a href="/tentang/profile" class="block pl-10 pr-5 py-3 hover:bg-white/20 transition-all duration-200 text-sm border-l-4 border-transparent hover:border-white font-medium text-white">Profile Sekolah</a>
                     <a href="/tentang/guru" class="block pl-10 pr-5 py-3 hover:bg-white/20 transition-all duration-200 text-sm border-l-4 border-transparent hover:border-white font-medium text-white">Guru</a>
                     <a href="/tentang/ekstra" class="block pl-10 pr-5 py-3 hover:bg-white/20 transition-all duration-200 text-sm border-l-4 border-transparent hover:border-white font-medium text-white">Ekstrakurikuler</a>
-                    <a href="/tentang/sarpras" class="block pl-10 pr-5 py-3 hover:bg-white/20 transition-all duration-200 text-sm border-l-4 border-transparent hover:border-white font-medium text-white">Sarana dan Prasarana</a>
+                    <a href="/tentang/fasilitas" class="block pl-10 pr-5 py-3 hover:bg-white/20 transition-all duration-200 text-sm border-l-4 border-transparent hover:border-white font-medium text-white">Sarana dan Prasarana</a>
                 </div>
             </div>
 
@@ -111,7 +111,7 @@
                 </div>
             </div>
 
-            <a href="/ppdb" class="block px-5 py-4 bg-white/25 hover:bg-white/35 transition-all duration-200 border-l-4 border-white font-bold active:bg-white/45 mx-3 rounded-lg my-3 shadow-lg text-center text-base text-green-800">
+            <a href="/ppdb/ppdb" class="block px-5 py-4 bg-white/25 hover:bg-white/35 transition-all duration-200 border-l-4 border-white font-bold active:bg-white/45 mx-3 rounded-lg my-3 shadow-lg text-center text-base text-green-800">
                 PPDB
             </a>
         </div>

@@ -51,13 +51,13 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            <span>Senin – Jumat: 07:00 – 15:00</span>
+                            <span>Senin – Jumat: 07:00 – 13:00</span>
                         </div>
                     </div>
 
                     <!-- Social Media Icons -->
                     <div class="flex items-center space-x-3 pt-2">
-                        <a href="#"
+                        <a href="https://www.instagram.com/minu.golokan?igsh=MXVqNDlseGJsNHV2"
                             class="bg-white text-green-800 p-2 rounded hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
                             aria-label="Instagram">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -66,7 +66,7 @@
                             </svg>
                         </a>
 
-                        <a href="#"
+                        <a href="https://www.facebook.com/share/1DfEapkpeG/?mibextid=wwXIfr"
                             class="bg-white text-green-800 p-2 rounded hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
                             aria-label="Facebook">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -82,16 +82,16 @@
                     <h3 class="font-bold text-xl mb-3">Telusuri</h3>
                     <ul class="space-y-2 text-sm sm:text-base">
                         <li>
-                            <a href="#" class="hover:text-gray-200 transition-colors block">Ekstrakurikuler</a>
+                            <a href="/tentang/ekstra" class="hover:text-gray-200 transition-colors block">Ekstrakurikuler</a>
                         </li>
                         <li>
-                            <a href="#" class="hover:text-gray-200 transition-colors block">Sarana dan Prasarana</a>
+                            <a href="/tentang/fasilitas" class="hover:text-gray-200 transition-colors block">Sarana dan Prasarana</a>
                         </li>
                         <li>
-                            <a href="#" class="hover:text-gray-200 transition-colors block">Prestasi</a>
+                            <a href="/informasi/prestasi" class="hover:text-gray-200 transition-colors block">Prestasi</a>
                         </li>
                         <li>
-                            <a href="#" class="hover:text-gray-200 transition-colors block">PPDB</a>
+                            <a href="/ppbd/ppbd" class="hover:text-gray-200 transition-colors block">PPDB</a>
                         </li>
                     </ul>
                 </div>
@@ -107,19 +107,19 @@
                         </div>
 
                         <!-- Contoh embed (uncomment & masukkan URL embed Anda untuk mengganti placeholder):
-            <iframe
-              src="YOUR_GOOGLE_MAPS_EMBED_URL"
-              class="w-full h-full border-0"
-              allowfullscreen
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-            -->
+                            <iframe
+                            src="YOUR_GOOGLE_MAPS_EMBED_URL"
+                            class="w-full h-full border-0"
+                            allowfullscreen
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            ></iframe>
+                            -->
                     </div>
 
                     <!-- optional quick address or "open map" button (shown under map on small screens) -->
                     <div class="mt-2">
-                        <a href="#"
+                        <a href="https://maps.app.goo.gl/hXxvvMq18ZwZkc7WA?g_st=ipc"
                             class="inline-block text-sm sm:text-base bg-white text-green-800 px-3 py-1 rounded hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-white">
                             Buka di Google Maps
                         </a>
