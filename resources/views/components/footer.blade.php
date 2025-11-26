@@ -22,12 +22,16 @@
                 <!-- Logo & Contact Section -->
                 <div class="space-y-4">
                     <div class="inline-flex items-center gap-3">
-                        <div class="bg-gray-200 text-green-800 px-4 py-2 font-bold text-base sm:text-lg rounded-md">
+                        <a href="/"
+                            class="bg-gray-200 text-green-800 px-4 py-2 font-bold text-base sm:text-lg rounded-md hover:bg-gray-300 transition">
                             Logo
-                        </div>
-                        <!-- optional tagline (hidden on very small screens) -->
-                        <span class="hidden sm:inline-block text-sm text-gray-100">MI Nahdlatul Ummah</span>
+                        </a>
+
+                        <span class="hidden sm:inline-block text-sm text-gray-100">
+                            MI Nahdlatul Ummah
+                        </span>
                     </div>
+
 
                     <div class="space-y-2 text-sm sm:text-base">
                         <h3 class="font-bold text-lg">MI Nahdlatul Ummah</h3>
@@ -82,16 +86,19 @@
                     <h3 class="font-bold text-xl mb-3">Telusuri</h3>
                     <ul class="space-y-2 text-sm sm:text-base">
                         <li>
-                            <a href="/tentang/ekstra" class="hover:text-gray-200 transition-colors block">Ekstrakurikuler</a>
+                            <a href="/tentang/ekstra"
+                                class="hover:text-gray-200 transition-colors block">Ekstrakurikuler</a>
                         </li>
                         <li>
-                            <a href="/tentang/fasilitas" class="hover:text-gray-200 transition-colors block">Sarana dan Prasarana</a>
+                            <a href="/tentang/fasilitas" class="hover:text-gray-200 transition-colors block">Sarana dan
+                                Prasarana</a>
                         </li>
                         <li>
-                            <a href="/informasi/prestasi" class="hover:text-gray-200 transition-colors block">Prestasi</a>
+                            <a href="/informasi/prestasi"
+                                class="hover:text-gray-200 transition-colors block">Prestasi</a>
                         </li>
                         <li>
-                            <a href="/ppbd/ppbd" class="hover:text-gray-200 transition-colors block">PPDB</a>
+                            <a href="/ppdb/ppdb" class="hover:text-gray-200 transition-colors block">PPDB</a>
                         </li>
                     </ul>
                 </div>
@@ -103,18 +110,13 @@
                     <!-- Responsive map placeholder: tinggi menyesuaikan layar -->
                     <div class="bg-gray-200 rounded-lg overflow-hidden h-40 sm:h-44 md:h-48 lg:h-56">
                         <div class="w-full h-full flex items-center justify-center text-gray-500 text-xs sm:text-sm">
-                            Google Maps Embed
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.715033200289!2d112.573735!3d-6.962353999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e77f7a393c86bcd%3A0xeffbed09f73f45c0!2sGolokan%2C%20Kec.%20Sidayu%2C%20Kabupaten%20Gresik%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid!4v1700000000001!5m2!1sid!2sid"
+                                class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
                         </div>
 
-                        <!-- Contoh embed (uncomment & masukkan URL embed Anda untuk mengganti placeholder):
-                            <iframe
-                            src="YOUR_GOOGLE_MAPS_EMBED_URL"
-                            class="w-full h-full border-0"
-                            allowfullscreen
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"
-                            ></iframe>
-                            -->
                     </div>
 
                     <!-- optional quick address or "open map" button (shown under map on small screens) -->
