@@ -110,11 +110,16 @@
                     <!-- Responsive map placeholder: tinggi menyesuaikan layar -->
                     <div class="bg-gray-200 rounded-lg overflow-hidden h-40 sm:h-44 md:h-48 lg:h-56">
                         <div class="w-full h-full flex items-center justify-center text-gray-500 text-xs sm:text-sm">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.715033200289!2d112.573735!3d-6.962353999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e77f7a393c86bcd%3A0xeffbed09f73f45c0!2sGolokan%2C%20Kec.%20Sidayu%2C%20Kabupaten%20Gresik%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid!4v1700000000001!5m2!1sid!2sid"
-                                class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
+                            <div class="w-full h-[450px] rounded-xl overflow-hidden shadow-lg">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3955.704017483265!2d112.5740407!3d-6.9633779!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e77f7a3d269ce0f%3A0xeffbed09f73f45c0!2sGolokan%2C%20Kec.%20Sidayu%2C%20Kabupaten%20Gresik%2C%20Jawa%20Timur%2061153!5e0!3m2!1sid!2sid!4v1700000000002!5m2!1sid!2sid"
+                                    class="w-full h-full"
+                                    style="border:0;"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
                         </div>
 
                     </div>

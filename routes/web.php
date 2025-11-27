@@ -21,6 +21,14 @@ Route::get('/tentang/fasilitas', function () {
     return view('sarpras'); 
 })->name('tentang.fasilitas');
 
+Route::get('/informasi/prestasi', function () {
+    return view('prestasi'); 
+})->name('informasi.prestasi');
+
+Route::get('/informasi/berita', function () {
+    return view('berita'); 
+})->name('informasi.berita');
+
 Route::get('/ppdb/ppdb', function () {
     return view('ppdb'); 
 })->name('ppdb.ppdb');
