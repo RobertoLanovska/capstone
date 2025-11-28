@@ -6,7 +6,7 @@
                 <!-- Gambar Potrait -->
                 <div class="aspect-[3/4] bg-gray-200">
                     <img 
-                        src="https://via.placeholder.com/1200x1600/3B82F6/FFFFFF?text=Foto+Bersama+Guru"
+                        src="https://via.placeholder.com/1200x1600/3B82F6/FFFFFF?text=Foto"
                         alt="Foto Bersama Guru"
                         class="w-full h-full object-cover"
                         loading="lazy"
@@ -15,7 +15,7 @@
 
                 <!-- Caption -->
                 <div class="p-4 text-center bg-gray-50">
-                    <h3 class="text-lg font-semibold text-gray-800">Foto Bersama Guru dan Karyawan</h3>
+                    <h3 class="text-lg font-semibold text-gray-800">Pamflet PPDB</h3>
                     <p class="text-sm text-gray-600">MI NAHDLATUL UMMAH GOLOKAN</p>
                 </div>
 
