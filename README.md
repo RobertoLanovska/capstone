@@ -37,6 +37,7 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 - **cp .env.example .env**
 - **php artisan key:generate**
 - **composer run dev**
+- **php artisan migrate**
 
 ## To update files locally and push them to GitHub
 
