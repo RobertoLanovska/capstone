@@ -12,7 +12,6 @@
                         loading="lazy"
                     >
                 </div>
-
                 <!-- Caption -->
                 <div class="p-4 text-center bg-gray-50">
                     <h3 class="text-lg font-semibold text-gray-800">Pamflet PPDB</h3>
