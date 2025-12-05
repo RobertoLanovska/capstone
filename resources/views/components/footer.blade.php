@@ -22,14 +22,11 @@
                 <!-- Logo & Contact Section -->
                 <div class="space-y-4">
                     <div class="inline-flex items-center gap-3">
-                        <a href="/"
-                            class="bg-gray-200 text-green-800 px-4 py-2 font-bold text-base sm:text-lg rounded-md hover:bg-gray-300 transition">
-                            Logo
-                        </a>
-
-                        <span class="hidden sm:inline-block text-sm text-gray-100">
-                            MI Nahdlatul Ummah
-                        </span>
+                        <div class="relative">
+                        <div class="absolute inset-0 bg-white rounded-full blur-md opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <img src="{{ asset('image/logo.png') }}" alt="Logo Sekolah"
+                             class="relative h-10 w-10 sm:h-11 sm:w-11 object-contain rounded-full shadow-lg bg-white p-1.5 transition-all duration-300 group-hover:shadow-2xl ring-2 ring-white/30">
+                    </div>
                     </div>
 
 
