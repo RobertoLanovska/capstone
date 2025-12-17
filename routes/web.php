@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SiswaController;
-
+use App\Http\Controllers\GuruController;
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -29,6 +29,15 @@ Route::middleware(['admin'])->group(function () {
     Route::put('/siswa/{id}', [SiswaController::class, 'update'])->name('siswa.update');
 
     Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
+
+    Route::get('/guru', [GuruController::class, 'index'])->name('guru');
+Route::get('/guru/create', [GuruController::class, 'create'])->name('guru.create');
+Route::post('/guru', [GuruController::class, 'store'])->name('guru.store');
+
+Route::get('/guru/{id}/edit', [GuruController::class, 'edit'])->name('guru.edit');
+Route::put('/guru/{id}', [GuruController::class, 'update'])->name('guru.update');
+
+Route::delete('/guru/{id}', [GuruController::class, 'destroy'])->name('guru.destroy');
 });
 
 Route::get('/', function () {

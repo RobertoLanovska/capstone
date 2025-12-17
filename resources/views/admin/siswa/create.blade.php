@@ -9,7 +9,7 @@
         <div class="card-body">
             <form method="POST" action="{{ route('siswa.store') }}">
                 @csrf
-
+                
                 <input class="form-control mb-2" name="nama" placeholder="Nama">
                 <input class="form-control mb-2" name="nisn" placeholder="NISN">
                 <input class="form-control mb-2" name="alamat" placeholder="Alamat">
