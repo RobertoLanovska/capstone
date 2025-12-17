@@ -119,10 +119,10 @@
                     <span>Dashboard</span>
                 </a>
               </li>
-              <li class="sidebar-item {{ request()->is('chat') ? 'active' : '' }}">
-                  <a href="/chat" class="sidebar-link">
+              <li class="sidebar-item {{ request()->is('akun') ? 'active' : '' }}">
+                  <a href="/akun" class="sidebar-link">
                       <i class="fa-solid fa-user-plus"></i>
-                      <span>Nambah Akun</span>
+                      <span>Akun</span>
                   </a>
               </li>
 

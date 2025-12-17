@@ -11,10 +11,10 @@ class Siswa extends Model
 
     protected $fillable = [
         'nama',
-        'nisns',
+        'nisn',
         'alamat',
         'tanggal_lahir',
         'wali_murid',
-        'telpon',
+        'telepon',
     ];
 }
