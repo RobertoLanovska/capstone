@@ -1,6 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/ubah-password', [AuthController::class, 'showUbahPassword'])->name('password.form');
+Route::post('/ubah-password', [AuthController::class, 'updatePassword'])->name('password.update');
+Route::middleware(['admin'])->group(function () {
+    Route::get('/admin', fn() => view('admin.dashboard'));
+});
 
 Route::get('/', function () {
     return view('home');
