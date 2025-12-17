@@ -1,70 +1,51 @@
 @extends('layout.master-admin')
+@section('title','Akun')
 
-@section('title', 'Akun')
-            <div class="page-heading">
-                <div class="page-title">
-                    <div class="row">
-                        <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Tambah Akun</h3>
-                        <br>
-                        <br>
-                        
-                        </div>
-                        <div class="col-12 col-md-6 order-md-2 order-first">
-                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Tambah Akun</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-                <section class="section">
-                    <div class="card">
-                        <div class="card-header">
-                        
-                            
-                        </div>
-                        
-                        <div class="card-body">
-                        <button type="button" class="btn btn-secondary btn-lg">
-                            Tambah data
-                        </button>
-
-
-                            <table class="table table-striped" id="table1">
-                                <thead>
-                                    <tr>
-                                    
-                                        <th>Nama</th>
-                                        <th>Emai</th>
-                                        
-                                    
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                
-                                <tr>
-                                    @foreach ($products as $product)
-                                    <td>{{ $product->name }}</td>
-                                    <td>{{ $product->email}}</td>
-                                    <td></td>
-    
-                                    
-                                </tr>
-
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-
-                   
-
-
-                    </div>
-
-                </section>
-            </div>       
 @section('content')
+<div class="page-heading">
+    <h3>Manajemen Akun</h3>
+
+    <a href="{{ route('akun.create') }}" class="btn btn-primary mb-3">
+        + Tambah Akun
+    </a>
+
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Email</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach ($account as $item)
+                    <tr>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->email }}</td>
+                        <td>
+                            <a href="{{ route('akun.edit', $item->id) }}" class="btn btn-sm btn-warning">
+                                Edit
+                            </a>
+                            <form action="{{ route('akun.destroy', $item->id) }}"
+                                method="POST"
+                                class="d-inline"
+                                onsubmit="return confirm('Yakin hapus akun ini?')">
+                                @csrf
+                                @method('DELETE')
+
+                                <button class="btn btn-sm btn-danger">
+                                    Hapus
+                                </button>
+                            </form>
+
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@endsection

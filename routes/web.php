@@ -11,6 +11,14 @@ Route::get('/ubah-password', [AuthController::class, 'showUbahPassword'])->name(
 Route::post('/ubah-password', [AuthController::class, 'updatePassword'])->name('password.update');
 Route::middleware(['admin'])->group(function () {
     Route::get('/admin', fn() => view('admin.dashboard'));
+    Route::get('/akun', [AuthController::class, 'account'])->name('account');
+    Route::get('/akun/create', [AuthController::class, 'create'])->name('akun.create');
+    Route::post('/akun', [AuthController::class, 'store'])->name('akun.store');
+
+    Route::get('/akun/{id}/edit', [AuthController::class, 'edit'])->name('akun.edit');
+    Route::put('/akun/{id}', [AuthController::class, 'update'])->name('akun.update');
+    Route::delete('/akun/{id}', [AuthController::class, 'destroy'])
+    ->name('akun.destroy');
 });
 
 Route::get('/', function () {

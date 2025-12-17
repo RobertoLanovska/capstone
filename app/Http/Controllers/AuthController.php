@@ -33,23 +33,7 @@ class AuthController extends Controller
         return view('admin.register');
     }
 
-    public function register(Request $request)
-    {
-
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|min:6|confirmed'
-        ]);
-
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        return redirect()->route('TambahAkun')->with('success', 'Registrasi berhasil, silakan login.');
-    }
+   
     public function updatePassword(Request $request)
     {
         // Validasi name dan email dulu
@@ -98,5 +82,71 @@ class AuthController extends Controller
     {
         Auth::logout();
         return redirect('/login');
+    }
+
+    public function account()
+    {
+        $account = User::all();
+        return view('admin.account', compact('account'));
+    }
+
+    // create account
+    public function create()
+    {
+        return view('admin.akun.create');
+    }
+     public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('account')->with('success', 'Akun berhasil ditambahkan');
+    }
+    public function edit($id)
+    {
+        $account = User::findOrFail($id);
+        return view('admin.akun.edit', compact('account'));
+    }
+    public function update(Request $request, $id)
+    {
+        $account = User::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,' . $id,
+        ]);
+
+        $data = $request->only('name', 'email');
+
+        if ($request->password) {
+            $data['password'] = Hash::make($request->password);
+        }
+
+        $account->update($data);
+
+        return redirect()->route('account')->with('success', 'Akun berhasil diperbarui');
+    }
+
+    public function destroy(string $id)
+    {
+        
+   $account = User::findOrFail($id);
+
+
+   
+
+    // Hapus produk
+    $account->delete();
+
+    return redirect()->route('account')->with('succes', 'akun berhasil dihapus');
     }
 }
