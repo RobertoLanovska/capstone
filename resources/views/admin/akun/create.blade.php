@@ -9,10 +9,13 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item">
-                    <a href="#">Dashboard</a>
+                    <a href="/admin">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="/akun">Akun</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    Akun
+                    Create
                 </li>
             </ol>
         </nav>

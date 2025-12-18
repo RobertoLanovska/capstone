@@ -9,7 +9,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item">
-                    <a href="#">Dashboard</a>
+                    <a href="admin">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                     Akun
@@ -24,7 +24,7 @@
     </a>
     <div class="card">
         <div class="card-body">
-            <div class="row mb-3 justify-content-end">
+            <div class="row mb-3 ">
                 <div class="col-md-4">
                     <input type="text"
                     id="searchInput"

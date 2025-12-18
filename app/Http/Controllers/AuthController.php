@@ -139,14 +139,14 @@ class AuthController extends Controller
     public function destroy(string $id)
     {
         
-   $account = User::findOrFail($id);
+        $account = User::findOrFail($id);
 
 
-   
+    
 
-    // Hapus produk
-    $account->delete();
+        // Hapus produk
+        $account->delete();
 
-    return redirect()->route('account')->with('succes', 'akun berhasil dihapus');
+        return redirect()->route('account')->with('succes', 'akun berhasil dihapus');
     }
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\EkstrakulikulerController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\SarpasController;
+use App\Http\Controllers\PpdbController;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
@@ -79,6 +80,15 @@ Route::middleware(['admin'])->group(function () {
     Route::put('/sarpas/{id}', [SarpasController::class, 'update'])->name('sarpas.update');
 
     Route::delete('/sarpas/{id}', [SarpasController::class, 'destroy'])->name('sarpas.destroy');
+
+    Route::get('/ppdb', [PpdbController::class, 'index'])->name('ppdb');
+    Route::get('/ppdb/create', [PpdbController::class, 'create'])->name('ppdb.create');
+    Route::post('/ppdb', [PpdbController::class, 'store'])->name('ppdb.store');
+
+    Route::get('/ppdb/{id}/edit', [PpdbController::class, 'edit'])->name('ppdb.edit');
+    Route::put('/ppdb/{id}', [PpdbController::class, 'update'])->name('ppdb.update');
+
+    Route::delete('/ppdb/{id}', [PpdbController::class, 'destroy'])->name('ppdb.destroy');
 });
 
 Route::get('/', function () {
