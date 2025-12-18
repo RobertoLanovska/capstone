@@ -41,7 +41,7 @@
                 <img src="images/icons/logo.png" alt="Logo" style="width: 50px; height: 50px;  margin: 0 auto 24px auto;"/>
                 <a href="" style="font-size: 18px;" >
                     
-                    Jaya Accu
+                    Company Profile
                 </a>
               </div>
               <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
@@ -126,63 +126,68 @@
                   </a>
               </li>
 
-              <li class="sidebar-item {{ request()->is('chat') ? 'active' : '' }}">
-                  <a href="/chat" class="sidebar-link">
+              <li class="sidebar-item {{ request()->is('siswa') ? 'active' : '' }}">
+                  <a href="/siswa" class="sidebar-link">
                       <i class="fa-solid fa-users"></i>
                       <span>Siswa</span>
                   </a>
               </li>
 
-              <li class="sidebar-item {{ request()->is('validasi') ? 'active' : '' }}">
-                  <a href="/validasi" class="sidebar-link">
+              <li class="sidebar-item {{ request()->is('guru') ? 'active' : '' }}">
+                  <a href="/guru" class="sidebar-link">
                        <i class="fa-solid fa-chalkboard-user"></i>
                       <span>Guru</span>
                   </a>
               </li>
 
-              <li class="sidebar-item {{ request()->is('products') ? 'active' : '' }}">
-                  <a href="/products" class="sidebar-link">
+              <li class="sidebar-item {{ request()->is('ekstrakulikuler') ? 'active' : '' }}">
+                  <a href="/ekstrakulikuler" class="sidebar-link">
                       <i class="fa-solid fa-futbol"></i>
                       <span>Ekstra Kurikuler</span>
                   </a>
               </li>
 
-              <li class="sidebar-item {{ request()->is('chat') ? 'active' : '' }}">
-                  <a href="/chat" class="sidebar-link">
+              <li class="sidebar-item {{ request()->is('sarpas') ? 'active' : '' }}">
+                  <a href="/sarpas" class="sidebar-link">
                       <i class="fa-solid fa-building"></i>
                       <span>Sarpas</span>
                   </a>
               </li>
-               <li class="sidebar-item {{ request()->is('chat') ? 'active' : '' }}">
-                  <a href="/chat" class="sidebar-link">
+               <li class="sidebar-item {{ request()->is('berita') ? 'active' : '' }}">
+                  <a href="/berita" class="sidebar-link">
                       <i class="fa-solid fa-newspaper"></i>
                       <span>Berita</span>
                   </a>
               </li>
-              <li class="sidebar-item {{ request()->is('chat') ? 'active' : '' }}">
-                  <a href="/chat" class="sidebar-link">
+              <li class="sidebar-item {{ request()->is('prestasi') ? 'active' : '' }}">
+                  <a href="/prestasi" class="sidebar-link">
                       <i class="fa-solid fa-trophy"></i>
                       <span>Prestasi</span>
                   </a>
               </li>
-              <li class="sidebar-item {{ request()->is('chat') ? 'active' : '' }}">
-                  <a href="/chat" class="sidebar-link">
+              <li class="sidebar-item {{ request()->is('ppdb') ? 'active' : '' }}">
+                  <a href="/ppdb" class="sidebar-link">
                       <i class="fa-solid fa-school"></i>
                       <span>PPDB</span>
                   </a>
               </li>
-              <li class="sidebar-item {{ request()->is('chat') ? 'active' : '' }}">
-                  <a href="/chat" class="sidebar-link">
-                      <i class="bi bi-grid-fill"></i>
-                      <span>Prestasi Home</span>
-                  </a>
-              </li>
-              <li class="sidebar-item {{ request()->is('chat') ? 'active' : '' }}">
-                  <a href="/chat" class="sidebar-link">
-                      <i class="bi bi-grid-fill"></i>
-                      <span>Berita Home</span>
-                  </a>
-              </li>
+             <li class="sidebar-item has-sub">
+                <a href="#" class="sidebar-link">
+                    <i class="bi bi-grid-fill"></i>
+                    <span>Home</span>
+                </a>
+
+                <ul class="submenu">
+                    <li class="submenu-item {{ request()->is('prestasi-home') ? 'active' : '' }}">
+                        <a href="/prestasi-home">Prestasi Home</a>
+                    </li>
+
+                    <li class="submenu-item {{ request()->is('berita-home') ? 'active' : '' }}">
+                        <a href="/berita-home">Berita Home</a>
+                    </li>
+                </ul>
+            </li>
+
               
               
 

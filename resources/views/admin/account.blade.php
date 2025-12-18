@@ -24,7 +24,19 @@
     </a>
     <div class="card">
         <div class="card-body">
-            <table class="table table-striped">
+            <div class="row mb-3 justify-content-end">
+                <div class="col-md-4">
+                    <input type="text"
+                    id="searchInput"
+                    class="form-control"
+                    placeholder="Cari"
+                    onkeyup="searchTable()">
+
+                </div>
+              
+            </div>
+
+            <table class="table table-striped" id="accountTable">
                 <thead>
                     <tr>
                         <th>Nama</th>
@@ -61,4 +73,28 @@
         </div>
     </div>
 </div>
+<script>
+function searchTable() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let table = document.getElementById("accountTable");
+    let rows = table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+        let nama = rows[i].getElementsByTagName("td")[0];
+        let email = rows[i].getElementsByTagName("td")[1];
+
+        if (nama && email) {
+            let textNama = nama.textContent.toLowerCase();
+            let textEmail = email.textContent.toLowerCase();
+
+            if (textNama.includes(input) || textEmail.includes(input)) {
+                rows[i].style.display = "";
+            } else {
+                rows[i].style.display = "none";
+            }
+        }
+    }
+}
+</script>
+
 @endsection

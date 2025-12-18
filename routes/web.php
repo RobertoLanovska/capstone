@@ -8,6 +8,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\EkstrakulikulerController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\PrestasiController;
+use App\Http\Controllers\SarpasController;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
@@ -69,6 +70,15 @@ Route::middleware(['admin'])->group(function () {
     Route::put('/prestasi/{id}', [PrestasiController::class, 'update'])->name('prestasi.update');
 
     Route::delete('/prestasi/{id}', [PrestasiController::class, 'destroy'])->name('prestasi.destroy');
+
+    Route::get('/sarpas', [SarpasController::class, 'index'])->name('sarpas');
+    Route::get('/sarpas/create', [SarpasController::class, 'create'])->name('sarpas.create');
+    Route::post('/sarpas', [SarpasController::class, 'store'])->name('sarpas.store');
+
+    Route::get('/sarpas/{id}/edit', [SarpasController::class, 'edit'])->name('sarpas.edit');
+    Route::put('/sarpas/{id}', [SarpasController::class, 'update'])->name('sarpas.update');
+
+    Route::delete('/sarpas/{id}', [SarpasController::class, 'destroy'])->name('sarpas.destroy');
 });
 
 Route::get('/', function () {
