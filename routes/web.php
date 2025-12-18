@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\EkstrakulikulerController;
+
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -31,13 +33,22 @@ Route::middleware(['admin'])->group(function () {
     Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
 
     Route::get('/guru', [GuruController::class, 'index'])->name('guru');
-Route::get('/guru/create', [GuruController::class, 'create'])->name('guru.create');
-Route::post('/guru', [GuruController::class, 'store'])->name('guru.store');
+    Route::get('/guru/create', [GuruController::class, 'create'])->name('guru.create');
+    Route::post('/guru', [GuruController::class, 'store'])->name('guru.store');
 
-Route::get('/guru/{id}/edit', [GuruController::class, 'edit'])->name('guru.edit');
-Route::put('/guru/{id}', [GuruController::class, 'update'])->name('guru.update');
+    Route::get('/guru/{id}/edit', [GuruController::class, 'edit'])->name('guru.edit');
+    Route::put('/guru/{id}', [GuruController::class, 'update'])->name('guru.update');
 
-Route::delete('/guru/{id}', [GuruController::class, 'destroy'])->name('guru.destroy');
+    Route::delete('/guru/{id}', [GuruController::class, 'destroy'])->name('guru.destroy');
+
+    Route::get('/ekstrakulikuler', [EkstrakulikulerController::class, 'index'])->name('ekstrakulikuler');
+    Route::get('/ekstrakulikuler/create', [EkstrakulikulerController::class, 'create'])->name('ekstrakulikuler.create');
+    Route::post('/ekstrakulikuler', [EkstrakulikulerController::class, 'store'])->name('ekstrakulikuler.store');
+
+    Route::get('/ekstrakulikuler/{id}/edit', [EkstrakulikulerController::class, 'edit'])->name('ekstrakulikuler.edit');
+    Route::put('/ekstrakulikuler/{id}', [EkstrakulikulerController::class, 'update'])->name('ekstrakulikuler.update');
+
+    Route::delete('/ekstrakulikuler/{id}', [EkstrakulikulerController::class, 'destroy'])->name('ekstrakulikuler.destroy');
 });
 
 Route::get('/', function () {
