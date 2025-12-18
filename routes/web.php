@@ -6,6 +6,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\EkstrakulikulerController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\PrestasiController;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
@@ -49,6 +51,24 @@ Route::middleware(['admin'])->group(function () {
     Route::put('/ekstrakulikuler/{id}', [EkstrakulikulerController::class, 'update'])->name('ekstrakulikuler.update');
 
     Route::delete('/ekstrakulikuler/{id}', [EkstrakulikulerController::class, 'destroy'])->name('ekstrakulikuler.destroy');
+
+    Route::get('/berita', [BeritaController::class, 'index'])->name('berita');
+    Route::get('/berita/create', [BeritaController::class, 'create'])->name('berita.create');
+    Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store');
+
+    Route::get('/berita/{id}/edit', [BeritaController::class, 'edit'])->name('berita.edit');
+    Route::put('/berita/{id}', [BeritaController::class, 'update'])->name('berita.update');
+
+    Route::delete('/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
+
+    Route::get('/prestasi', [PrestasiController::class, 'index'])->name('prestasi');
+    Route::get('/prestasi/create', [PrestasiController::class, 'create'])->name('prestasi.create');
+    Route::post('/prestasi', [PrestasiController::class, 'store'])->name('prestasi.store');
+
+    Route::get('/prestasi/{id}/edit', [PrestasiController::class, 'edit'])->name('prestasi.edit');
+    Route::put('/prestasi/{id}', [PrestasiController::class, 'update'])->name('prestasi.update');
+
+    Route::delete('/prestasi/{id}', [PrestasiController::class, 'destroy'])->name('prestasi.destroy');
 });
 
 Route::get('/', function () {
