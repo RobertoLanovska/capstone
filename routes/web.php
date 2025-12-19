@@ -27,14 +27,59 @@ Route::middleware(['admin'])->group(function () {
     Route::delete('/akun/{id}', [AuthController::class, 'destroy'])
     ->name('akun.destroy');
     
-    Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
-    Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
-    Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
+    Route::get('/siswa/kelas-1', [SiswaController::class, 'siswa_1'])->name('siswa_1');
+    Route::get('/siswa/kelas-1/create', [SiswaController::class, 'create_1'])->name('siswa_1.create');
+    Route::post('/siswa/kelas-1', [SiswaController::class, 'store_1'])->name('siswa_1.store');
 
-    Route::get('/siswa/{id}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
-    Route::put('/siswa/{id}', [SiswaController::class, 'update'])->name('siswa.update');
+    Route::get('/siswa/kelas-1/{id}/edit', [SiswaController::class, 'edit_1'])->name('siswa_1.edit');
+    Route::put('/siswa/kelas-1/{id}', [SiswaController::class, 'update_1'])->name('siswa_1.update');
 
-    Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
+    Route::delete('/siswa/kelas-1/{id}', [SiswaController::class, 'destroy_1'])->name('siswa_1.destroy');
+
+    Route::get('/siswa/kelas-2', [SiswaController::class, 'siswa_2'])->name('siswa_2');
+    Route::get('/siswa/kelas-2/create', [SiswaController::class, 'create_2'])->name('siswa_2.create');
+    Route::post('/siswa/kelas-2', [SiswaController::class, 'store_2'])->name('siswa_2.store');
+
+    Route::get('/siswa/kelas-2/{id}/edit', [SiswaController::class, 'edit_2'])->name('siswa_2.edit');
+    Route::put('/siswa/kelas-2/{id}', [SiswaController::class, 'update_2'])->name('siswa_2.update');
+
+    Route::delete('/siswa/kelas-2/{id}', [SiswaController::class, 'destroy_2'])->name('siswa_2.destroy');
+
+    Route::get('/siswa/kelas-3', [SiswaController::class, 'siswa_3'])->name('siswa_3');
+    Route::get('/siswa/kelas-3/create', [SiswaController::class, 'create_3'])->name('siswa_3.create');
+    Route::post('/siswa/kelas-3', [SiswaController::class, 'store_3'])->name('siswa_3.store');
+
+    Route::get('/siswa/kelas-3/{id}/edit', [SiswaController::class, 'edit_3'])->name('siswa_3.edit');
+    Route::put('/siswa/kelas-3/{id}', [SiswaController::class, 'update_3'])->name('siswa_3.update');
+
+    Route::delete('/siswa/kelas-3/{id}', [SiswaController::class, 'destroy_3'])->name('siswa_3.destroy');
+
+    Route::get('/siswa/kelas-4', [SiswaController::class, 'siswa_4'])->name('siswa_4');
+    Route::get('/siswa/kelas-4/create', [SiswaController::class, 'create_4'])->name('siswa_4.create');
+    Route::post('/siswa/kelas-4', [SiswaController::class, 'store_4'])->name('siswa_4.store');
+
+    Route::get('/siswa/kelas-4/{id}/edit', [SiswaController::class, 'edit_4'])->name('siswa_4.edit');
+    Route::put('/siswa/kelas-4/{id}', [SiswaController::class, 'update_4'])->name('siswa_4.update');
+
+    Route::delete('/siswa/kelas-4/{id}', [SiswaController::class, 'destroy_4'])->name('siswa_4.destroy');
+
+    Route::get('/siswa/kelas-5', [SiswaController::class, 'siswa_5'])->name('siswa_5');
+    Route::get('/siswa/kelas-5/create', [SiswaController::class, 'create_5'])->name('siswa_5.create');
+    Route::post('/siswa/kelas-5', [SiswaController::class, 'store_5'])->name('siswa_5.store');
+
+    Route::get('/siswa/kelas-5/{id}/edit', [SiswaController::class, 'edit_5'])->name('siswa_5.edit');
+    Route::put('/siswa/kelas-5/{id}', [SiswaController::class, 'update_5'])->name('siswa_5.update');
+
+    Route::delete('/siswa/kelas-5/{id}', [SiswaController::class, 'destroy_5'])->name('siswa_5.destroy');
+
+    Route::get('/siswa/kelas-6', [SiswaController::class, 'siswa_6'])->name('siswa_6');
+    Route::get('/siswa/kelas-6/create', [SiswaController::class, 'create_6'])->name('siswa_6.create');
+    Route::post('/siswa/kelas-6', [SiswaController::class, 'store_6'])->name('siswa_6.store');
+
+    Route::get('/siswa/kelas-6/{id}/edit', [SiswaController::class, 'edit_6'])->name('siswa_6.edit');
+    Route::put('/siswa/kelas-6/{id}', [SiswaController::class, 'update_6'])->name('siswa_6.update');
+
+    Route::delete('/siswa/kelas-6/{id}', [SiswaController::class, 'destroy_6'])->name('siswa_6.destroy');
 
     Route::get('/guru', [GuruController::class, 'index'])->name('guru');
     Route::get('/guru/create', [GuruController::class, 'create'])->name('guru.create');

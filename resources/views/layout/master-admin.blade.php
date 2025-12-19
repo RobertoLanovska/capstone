@@ -126,12 +126,35 @@
                   </a>
               </li>
 
-              <li class="sidebar-item {{ request()->is('siswa') ? 'active' : '' }}">
-                  <a href="/siswa" class="sidebar-link">
+              <li class="sidebar-item has-sub {{ request()->is('siswa/kelas-*') ? 'active' : '' }}">
+                  <a href="#" class="sidebar-link">
                       <i class="fa-solid fa-users"></i>
                       <span>Siswa</span>
                   </a>
+
+                  <ul class="submenu {{ request()->is('siswa/kelas-*') ? 'submenu-open' : '' }}">
+                      <li class="submenu-item {{ request()->is('siswa/kelas-1') ? 'active' : '' }}">
+                          <a href="/siswa/kelas-1" class="submenu-link">Kelas 1</a>
+                      </li>
+                      <li class="submenu-item {{ request()->is('siswa/kelas-2') ? 'active' : '' }}">
+                          <a href="/siswa/kelas-2" class="submenu-link">Kelas 2</a>
+                      </li>
+                      <li class="submenu-item {{ request()->is('siswa/kelas-3') ? 'active' : '' }}">
+                          <a href="/siswa/kelas-3" class="submenu-link">Kelas 3</a>
+                      </li>
+                      <li class="submenu-item {{ request()->is('siswa/kelas-4') ? 'active' : '' }}">
+                          <a href="/siswa/kelas-4" class="submenu-link">Kelas 4</a>
+                      </li>
+                      <li class="submenu-item {{ request()->is('siswa/kelas-5') ? 'active' : '' }}">
+                          <a href="/siswa/kelas-5" class="submenu-link">Kelas 5</a>
+                      </li>
+                      <li class="submenu-item {{ request()->is('siswa/kelas-6') ? 'active' : '' }}">
+                          <a href="/siswa/kelas-6" class="submenu-link">Kelas 6</a>
+                      </li>
+                  </ul>
               </li>
+
+
 
               <li class="sidebar-item {{ request()->is('guru') ? 'active' : '' }}">
                   <a href="/guru" class="sidebar-link">
@@ -171,22 +194,7 @@
                       <span>PPDB</span>
                   </a>
               </li>
-             <li class="sidebar-item has-sub">
-                <a href="#" class="sidebar-link">
-                    <i class="bi bi-grid-fill"></i>
-                    <span>Home</span>
-                </a>
-
-                <ul class="submenu">
-                    <li class="submenu-item {{ request()->is('prestasi-home') ? 'active' : '' }}">
-                        <a href="/prestasi-home">Prestasi Home</a>
-                    </li>
-
-                    <li class="submenu-item {{ request()->is('berita-home') ? 'active' : '' }}">
-                        <a href="/berita-home">Berita Home</a>
-                    </li>
-                </ul>
-            </li>
+          
 
               
               

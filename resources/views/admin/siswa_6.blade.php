@@ -14,7 +14,7 @@
         </nav>
     </div>
 
-    <a href="{{ route('siswa.create') }}" class="btn btn-primary mb-3">
+    <a href="{{ route('siswa_6.create') }}" class="btn btn-primary mb-3">
         + Tambah Siswa
     </a>
 
@@ -33,7 +33,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($siswa as $item)
+                @foreach ($siswa_6 as $item)
                 <tr>
                     <td>{{ $item->nama }}</td>
                     <td>{{ $item->nisn }}</td>
@@ -42,10 +42,10 @@
                     <td>{{ $item->wali_murid }}</td>
                     <td>{{ $item->telepon }}</td>
                     <td>
-                        <a href="{{ route('siswa.edit', $item->id) }}"
+                        <a href="{{ route('siswa_6.edit', $item->id) }}"
                            class="btn btn-sm btn-warning">Edit</a>
 
-                        <form action="{{ route('siswa.destroy', $item->id) }}"
+                        <form action="{{ route('siswa_6.destroy', $item->id) }}"
                               method="POST"
                               class="d-inline"
                               onsubmit="return confirm('Hapus data siswa?')">

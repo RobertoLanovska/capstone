@@ -7,7 +7,7 @@
 
     <div class="card col-md-6">
         <div class="card-body">
-            <form method="POST" action="{{ route('siswa.store') }}">
+            <form method="POST" action="{{ route('siswa_4.store') }}">
                 @csrf
                 
                 <input class="form-control mb-2" name="nama" placeholder="Nama">
@@ -18,7 +18,7 @@
                 <input class="form-control mb-3" name="telepon" placeholder="Telepon">
 
                 <button class="btn btn-primary">Simpan</button>
-                <a href="{{ route('siswa') }}" class="btn btn-secondary">Kembali</a>
+                <a href="{{ route('siswa_4') }}" class="btn btn-secondary">Kembali</a>
             </form>
         </div>
     </div>

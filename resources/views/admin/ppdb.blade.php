@@ -5,9 +5,9 @@
 <div class="page-heading">
     <h3>Data PPDB</h3>
 
-    <a href="{{ route('ppdb.create') }}" class="btn btn-primary mb-3">
+    <!-- <a href="{{ route('ppdb.create') }}" class="btn btn-primary mb-3">
         + Tambah PPDB
-    </a>
+    </a> -->
 
     <div class="card">
         <div class="card-body">
