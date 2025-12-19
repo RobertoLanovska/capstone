@@ -1,3 +1,3 @@
 <x-layout>
-    <x-tentang.ekstra />
+    <x-tentang.ekstra :ekstrakulikuler="$ekstrakulikuler" />
 </x-layout>

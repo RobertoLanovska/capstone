@@ -1,7 +1,17 @@
 @extends('layout.master-admin')
-@section('title','Tambah PPDB')
+@section('title','Tambah Ppdb')
 
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="page-heading">
     <h3>Tambah PPDB</h3>
 

@@ -75,5 +75,12 @@ class SarpasController extends Controller
         return redirect()->route('sarpas')
             ->with('success', 'Data sarana prasarana berhasil dihapus');
     }
+
+    public function frontend()
+    {
+        $sarpas = Sarpas::latest()->get();
+        return view('sarpras', compact('sarpas'));
+    }
+
 }
 

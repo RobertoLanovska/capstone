@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="page-heading">
-    <h3>Data PPDB</h3>
+    <h3>Data PPDB</h3><br>
 
     <!-- <a href="{{ route('ppdb.create') }}" class="btn btn-primary mb-3">
         + Tambah PPDB

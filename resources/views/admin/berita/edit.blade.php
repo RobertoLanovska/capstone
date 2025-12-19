@@ -1,5 +1,7 @@
 @extends('layout.master-admin')
 @section('title','Edit Berita')
+<script src="https://cdn.ckeditor.com/4.25.1-lts/standard/ckeditor.js"></script>
+
 
 @section('content')
 <div class="page-heading">

@@ -1,3 +1,3 @@
 <x-layout>
-    <x-informasi.berita />
+    <x-informasi.berita :berita="$berita" />
 </x-layout>

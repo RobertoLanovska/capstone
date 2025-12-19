@@ -1,107 +1,41 @@
-<!DOCTYPE html>
-<html lang="id">
+@props(['ekstrakulikuler'])
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ekstrakurikuler</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
+<section class="py-16 px-4 mt-24">
+    <div class="max-w-7xl mx-auto">
 
-<body class="bg-gray-50">
-    <!-- Section Ekstrakurikuler -->
-    <section class="py-16 px-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="mb-8">
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200">
-                    <div class="aspect-video bg-gray-200">
-                        <img src="https://via.placeholder.com/1200x675/3B82F6/FFFFFF?text=Foto+Bersama+Guru"
-                            alt="Foto Bersama Guru" class="w-full h-full object-cover" loading="lazy">
-                    </div>
-                    <div class="p-4 text-center bg-gray-50">
-                        <h3 class="text-lg font-semibold text-gray-800">Foto Bersama Guru dan Karyawan</h3>
-                        <p class="text-sm text-gray-600">MI NAHDLATUL UMMAH GOLOKAN</p>
-                    </div>
-                </div>
-            </div>
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">
+            Ekstrakurikuler
+        </h1>
 
-            <!-- Title -->
-            <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">
-                Ekstrakurikuler
-            </h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
-            <!-- Landscape horizontal container (cards tetap desain sama, tapi landscape) -->
-            <!-- Grid Landscape 2 foto per baris -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            @forelse ($ekstrakulikuler as $item)
+                <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200
+                            hover:shadow-xl transition duration-300">
 
-                <!-- Card 1 -->
-                <div
-                    class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition duration-300">
                     <div class="aspect-[16/9] bg-gray-200">
-                        <img src="https://via.placeholder.com/500x280/3B82F6/FFFFFF?text=Ekstra+1"
-                            class="w-full h-full object-cover" alt="">
+                        <img
+                            src="{{ asset('storage/'.$item->foto) }}"
+                            class="w-full h-full object-cover"
+                            alt="{{ $item->nama }}"
+                        >
                     </div>
+
                     <div class="p-4 text-center">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Nama Ekstra</h3>
-                        <p class="text-sm text-gray-500">Jadwal Ekstra</p>
+                        <h3 class="text-lg font-semibold text-gray-800">
+                            {{ $item->nama }}
+                        </h3>
+                        <p class="text-sm text-gray-500">
+                            {{ $item->jadwal }}
+                        </p>
                     </div>
                 </div>
-
-                <!-- Card 2 -->
-                <div
-                    class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition duration-300">
-                    <div class="aspect-[16/9] bg-gray-200">
-                        <img src="https://via.placeholder.com/500x280/3B82F6/FFFFFF?text=Ekstra+2"
-                            class="w-full h-full object-cover" alt="">
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Nama Ekstra</h3>
-                        <p class="text-sm text-gray-500">Jadwal Ekstra</p>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div
-                    class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition duration-300">
-                    <div class="aspect-[16/9] bg-gray-200">
-                        <img src="https://via.placeholder.com/500x280/3B82F6/FFFFFF?text=Ekstra+3"
-                            class="w-full h-full object-cover" alt="">
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Nama Ekstra</h3>
-                        <p class="text-sm text-gray-500">Jadwal Ekstra</p>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div
-                    class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition duration-300">
-                    <div class="aspect-[16/9] bg-gray-200">
-                        <img src="https://via.placeholder.com/500x280/3B82F6/FFFFFF?text=Ekstra+4"
-                            class="w-full h-full object-cover" alt="">
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Nama Ekstra</h3>
-                        <p class="text-sm text-gray-500">Jadwal Ekstra</p>
-                    </div>
-                </div>
-
-            </div>
+            @empty
+                <p class="col-span-full text-center text-gray-500">
+                    Belum ada data ekstrakurikuler
+                </p>
+            @endforelse
 
         </div>
-    </section>
-
-
-    <style>
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
-</body>
-
-</html>
+    </div>
+</section>

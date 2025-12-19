@@ -1,117 +1,101 @@
-<!DOCTYPE html>
-<html lang="id">
+@props(['berita'])
+<section class="py-16 px-4 font-body">
+    <div class="max-w-5xl mx-auto">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fasilitas</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
+        <!-- JUDUL -->
+        <h1 class="text-5xl font-heading font-bold text-center text-gray-800 pt-20 mb-12 tracking-tight">
+            Berita
+        </h1>
 
-<body class="bg-gray-50">
-    <!-- Section Ekstrakurikuler -->
-    <section class="py-16 px-4">
-        <div class="max-w-4xl mx-auto">
+        <!-- GRID -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            @foreach ($berita as $item)
+                <!-- CARD -->
+                <div onclick="openModal({{ $item->id }})" class="cursor-pointer bg-white rounded-xl shadow-md
+                               hover:shadow-xl transition overflow-hidden">
 
-            <h1 class="text-5xl font-bold text-center text-gray-800 pt-8 mb-10">
-                Berita
-            </h1>
-
-            <!-- Grid 3 kolom, total 6 card -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                <!-- Card 1 -->
-                <div
-                    class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition">
                     <div class="aspect-[16/9] bg-gray-200">
-                        <img src="https://via.placeholder.com/500x280/3B82F6/FFFFFF?text=Berita+1"
+                        <img src="{{ asset('storage/' . $item->foto) }}" alt="{{ $item->judul }}"
                             class="w-full h-full object-cover">
                     </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Judul Berita</h3>
-                        <p class="text-sm text-gray-500">Deskripsi singkat</p>
+
+                    <div class="p-5 text-center">
+                        <h3 class="text-lg font-news  font-semibold text-gray-800 mb-2 leading-snug">
+                            {{ $item->judul }}
+                        </h3>
+                        <p class="text-sm text-gray-600 leading-relaxed font-times">
+                            {{ Str::limit($item->deskripsi, 70) }}
+                        </p>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div
-                    class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition">
-                    <div class="aspect-[16/9] bg-gray-200">
-                        <img src="https://via.placeholder.com/500x280/EF4444/FFFFFF?text=Berita+2"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Judul Berita</h3>
-                        <p class="text-sm text-gray-500">Deskripsi singkat</p>
+                <!-- MODAL -->
+                <div id="modal-{{ $item->id }}" class="fixed inset-0 z-50 hidden items-center justify-center
+                                bg-black/70 backdrop-blur-sm px-4 font-body">
+
+                    <!-- Overlay -->
+                    <div class="absolute inset-0" onclick="closeModal({{ $item->id }})"></div>
+
+                    <!-- Content -->
+                    <div class="relative bg-white w-full max-w-xl rounded-2xl shadow-2xl
+                                   transform scale-95 opacity-0 transition-all duration-300
+                                   modal-content">
+
+                        <!-- Image -->
+                        <div class="overflow-hidden rounded-t-2xl">
+                            <img src="{{ asset('storage/' . $item->foto) }}" alt="{{ $item->judul }}"
+                                class="w-full h-56 object-cover">
+                        </div>
+
+                        <!-- Body -->
+                        <div class="p-6 text-center">
+                            <h2 class="text-2xl font-news font-semibold text-gray-800 mb-3 leading-snug">
+                                {{ $item->judul }}
+                            </h2>
+
+                            <p class="text-gray-600 leading-loose font-times text-base">
+                            <div class="text-gray-600 leading-loose font-times text-left">
+                                {!! $item->deskripsi !!}
+                            </div>
+                            </p>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Card 3 -->
-                <div
-                    class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition">
-                    <div class="aspect-[16/9] bg-gray-200">
-                        <img src="https://via.placeholder.com/500x280/10B981/FFFFFF?text=Berita+3"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Judul Berita</h3>
-                        <p class="text-sm text-gray-500">Deskripsi singkat</p>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div
-                    class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition">
-                    <div class="aspect-[16/9] bg-gray-200">
-                        <img src="https://via.placeholder.com/500x280/F59E0B/FFFFFF?text=Berita+4"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Judul Berita</h3>
-                        <p class="text-sm text-gray-500">Deskripsi singkat</p>
-                    </div>
-                </div>
-
-                <!-- Card 5 -->
-                <div
-                    class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition">
-                    <div class="aspect-[16/9] bg-gray-200">
-                        <img src="https://via.placeholder.com/500x280/8B5CF6/FFFFFF?text=Berita+5"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Judul Berita</h3>
-                        <p class="text-sm text-gray-500">Deskripsi singkat</p>
-                    </div>
-                </div>
-
-                <!-- Card 6 -->
-                <div
-                    class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition">
-                    <div class="aspect-[16/9] bg-gray-200">
-                        <img src="https://via.placeholder.com/500x280/0EA5E9/FFFFFF?text=Berita+6"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Judul Berita</h3>
-                        <p class="text-sm text-gray-500">Deskripsi singkat</p>
-                    </div>
-                </div>
-
-            </div>
+            @endforeach
         </div>
-    </section>
 
-    <style>
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
+    </div>
+</section>
+
+<script>
+    function openModal(id) {
+        const modal = document.getElementById('modal-' + id);
+        const content = modal.querySelector('.modal-content');
+
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+
+        setTimeout(() => {
+            content.classList.remove('scale-95', 'opacity-0');
+            content.classList.add('scale-100', 'opacity-100');
+        }, 50);
+
+        document.addEventListener('keydown', escHandler);
+        function escHandler(e) {
+            if (e.key === 'Escape') closeModal(id);
         }
+    }
 
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
-</body>
+    function closeModal(id) {
+        const modal = document.getElementById('modal-' + id);
+        const content = modal.querySelector('.modal-content');
 
-</html>
+        content.classList.remove('scale-100', 'opacity-100');
+        content.classList.add('scale-95', 'opacity-0');
+
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }, 300);
+    }
+</script>

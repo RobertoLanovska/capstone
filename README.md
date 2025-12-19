@@ -27,9 +27,9 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 - **cd capstone**
 - **composer install**
 - **cp .env.example .env**
+- **php artisan migrate**
 - **php artisan key:generate**
 - **composer run dev**
-- **php artisan migrate**
 
 ## To update files locally and push them to GitHub
 

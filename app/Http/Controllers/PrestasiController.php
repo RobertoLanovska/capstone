@@ -78,5 +78,11 @@ class PrestasiController extends Controller
         return redirect()->route('prestasi')
             ->with('success', 'Prestasi berhasil dihapus');
     }
+
+    public function front()
+    {
+        $prestasi = Prestasi::latest()->get();
+        return view('prestasi', compact('prestasi'));
+    }
 }
 

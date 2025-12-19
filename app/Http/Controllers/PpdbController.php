@@ -52,7 +52,7 @@ class PpdbController extends Controller
         $request->validate([
             'judul' => 'required',
             'deskripsi' => 'required',
-            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:5048'
         ]);
 
         $data = $request->only('judul', 'deskripsi');
@@ -77,6 +77,12 @@ class PpdbController extends Controller
 
         return redirect()->route('ppdb')
             ->with('success', 'Data PPDB berhasil dihapus');
+    }
+
+    public function frontend()
+    {
+        $ppdb = Ppdb::latest()->get();
+        return view('ppdb', compact('ppdb'));
     }
 }
 
