@@ -1,7 +1,16 @@
 @extends('layout.master-admin')
 @section('title','Tambah Ekstrakulikuler')
-
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="page-heading">
     <h3>Tambah Data Ekstrakulikuler</h3>
 
@@ -13,7 +22,7 @@
                 @csrf
 
                 <input class="form-control mb-2" name="nama" placeholder="Nama">
-                <input type="date"class="form-control mb-2" name="jadwal" placeholder="Jadwal">
+                <input type="string"class="form-control mb-2" name="jadwal" placeholder="Jadwal">
               
 
                 <label>Foto Profil</label>

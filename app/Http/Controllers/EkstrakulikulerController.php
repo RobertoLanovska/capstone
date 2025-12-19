@@ -25,8 +25,8 @@ class EkstrakulikulerController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'jadwal' => 'required|date',
-            'foto' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'jadwal' => 'required',
+            'foto' => 'required|image|mimes:jpg,jpeg,png|max:10048',
         ]);
 
         $path = $request->file('foto')->store('esktrakulikuler', 'public');
@@ -53,8 +53,8 @@ class EkstrakulikulerController extends Controller
 
         $request->validate([
             'nama' => 'required',
-            'jadwal' => 'required|date',
-            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'jadwal' => 'required',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:10048',
         ]);
 
         $data = $request->only('nama', 'jadwal', 'foto');
@@ -80,4 +80,12 @@ class EkstrakulikulerController extends Controller
         return redirect()->route('ekstrakulikuler')
             ->with('success', 'Data ekstrakulikuler berhasil dihapus');
     }
+
+    public function frontend()
+    {
+        $ekstrakulikuler = Ekstrakulikuler::latest()->get();
+
+        return view('ekstra', compact('ekstrakulikuler'));
+    }
+
 }

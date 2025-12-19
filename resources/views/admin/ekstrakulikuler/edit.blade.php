@@ -14,7 +14,7 @@
                 @method('PUT')
 
                 <input class="form-control mb-2" name="nama" value="{{ $ekstrakulikuler->nama }}">
-                <input type="date"class="form-control mb-2" name="jadwal" value="{{ $ekstrakulikuler->jadwal }}">
+                <input type="string"class="form-control mb-2" name="jadwal" value="{{ $ekstrakulikuler->jadwal }}">
                 
 
                 <label>Foto Kegiatan</label><br>

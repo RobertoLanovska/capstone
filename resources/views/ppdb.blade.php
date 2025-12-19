@@ -1,3 +1,3 @@
 <x-layout>
-    <x-ppdb.ppdb />
+    <x-ppdb.ppdb :ppdb="$ppdb"/>
 </x-layout>

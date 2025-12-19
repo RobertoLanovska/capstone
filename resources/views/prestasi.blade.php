@@ -1,3 +1,3 @@
 <x-layout>
-    <x-informasi.prestasi />
+    <x-informasi.prestasi :prestasi="$prestasi" />
 </x-layout>

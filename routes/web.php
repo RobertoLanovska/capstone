@@ -87,7 +87,7 @@ Route::middleware(['admin'])->group(function () {
 
     Route::get('/ppdb/{id}/edit', [PpdbController::class, 'edit'])->name('ppdb.edit');
     Route::put('/ppdb/{id}', [PpdbController::class, 'update'])->name('ppdb.update');
-
+    
     Route::delete('/ppdb/{id}', [PpdbController::class, 'destroy'])->name('ppdb.destroy');
 });
 
@@ -102,22 +102,19 @@ Route::get('/tentang/guru', function () {
     return view('guru'); 
 })->name('tentang.guru');
 
-Route::get('/tentang/ekstra', function () {
-    return view('ekstra'); 
-})->name('tentang.ekstra');
+Route::get('tentang/ekstra', [EkstrakulikulerController::class, 'frontend'])
+    ->name('ekstra');
 
-Route::get('/tentang/fasilitas', function () {
-    return view('sarpras'); 
-})->name('tentang.fasilitas');
+Route::get('tentang/fasilitas', [SarpasController::class, 'frontend'])
+    ->name('fasilitas');
 
-Route::get('/informasi/prestasi', function () {
-    return view('prestasi'); 
-})->name('informasi.prestasi');
+Route::get('informasi/prestasi', [PrestasiController::class, 'front'])
+    ->name('prestasi.front');
 
-Route::get('/informasi/berita', function () {
-    return view('berita'); 
-})->name('informasi.berita');
+Route::get('informasi/berita', [BeritaController::class, 'frontend'])
+    ->name('berita.frontend');
+Route::get('/berita/{id}', [BeritaController::class, 'show'])
+    ->name('berita.detail');
 
-Route::get('/ppdb/ppdb', function () {
-    return view('ppdb'); 
-})->name('ppdb.ppdb');
+Route::get('ppdb/ppdb', [PpdbController::class, 'frontend'])
+    ->name('ppdb.frontend');

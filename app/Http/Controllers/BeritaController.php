@@ -24,7 +24,7 @@ class BeritaController extends Controller
         $request->validate([
             'judul' => 'required',
             'deskripsi' => 'required',
-            'foto' => 'required|image|mimes:jpg,jpeg,png|max:2048'
+            'foto' => 'required|image|mimes:jpg,jpeg,png|max:10048'
         ]);
 
         $path = $request->file('foto')->store('berita', 'public');
@@ -52,7 +52,7 @@ class BeritaController extends Controller
         $request->validate([
             'judul' => 'required',
             'deskripsi' => 'required',
-            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:10048'
         ]);
 
         $data = $request->only('judul', 'deskripsi');
@@ -78,5 +78,12 @@ class BeritaController extends Controller
         return redirect()->route('berita')
             ->with('success', 'Berita berhasil dihapus');
     }
-}
 
+    public function frontend()
+    {
+        $berita = Berita::latest()->paginate(6);
+        return view('berita', compact('berita'));
+    }
+
+
+}

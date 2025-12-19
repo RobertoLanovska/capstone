@@ -1,79 +1,75 @@
-<!DOCTYPE html>
-<html lang="id">
+@props(['prestasi'])
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prestasi</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
+<section class="py-16 px-4 font-body">
+    <div class="max-w-7xl mx-auto">
 
-<body class="bg-gray-50">
-    <section class="py-16 px-4">
-        <div class="max-w-7xl mx-auto">
-            <!-- Title -->
-            <h1 class="text-5xl font-bold text-center text-gray-800 pt-8 mb-10">
-                Prestasi
-            </h1>
+        <h1 class="text-5xl font-heading font-bold text-center text-gray-800 pt-20 mb-12 tracking-tight">
+            Prestasi
+        </h1>
 
-            <!-- Prestasi Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
 
-                <!-- Prestasi 1 -->
+            @foreach ($prestasi as $item)
                 <div
-                    class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300">
-                    <div class="aspect-[4/3] bg-gray-200">
-                        <img src="https://via.placeholder.com/400x300/F59E0B/FFFFFF?text=Juara+1+Lomba+MTQ"
-                            alt="Prestasi" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-5 text-center">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-1 mt-3">Juara 1 Lomba MTQ</h3>
-                        <p class="text-sm text-gray-600">Tingkat Kabupaten Sidoarjo</p>
-                    </div>
-                </div>
+                    x-data="{ open: false }"
+                    class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200
+                           hover:shadow-xl transition cursor-pointer">
 
-                <!-- Prestasi 2 -->
-                <div
-                    class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300">
-                    <div class="aspect-[4/3] bg-gray-200">
-                        <img src="https://via.placeholder.com/400x300/F59E0B/FFFFFF?text=Juara+Olahraga" alt="Prestasi"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-5 text-center">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-1 mt-3">Juara 2 Futsal</h3>
-                        <p class="text-sm text-gray-600">Tingkat Kecamatan</p>
-                    </div>
-                </div>
+                    <!-- CARD (CLICKABLE) -->
+                    <div @click="open = true">
+                        <div class="aspect-[3/4] bg-gray-200">
+                            <img
+                                src="{{ asset('storage/'.$item->foto) }}"
+                                alt="{{ $item->judul }}"
+                                class="w-full h-full object-cover">
+                        </div>
 
-                <!-- Prestasi 3 -->
-                <div
-                    class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300">
-                    <div class="aspect-[4/3] bg-gray-200">
-                        <img src="https://via.placeholder.com/400x300/F59E0B/FFFFFF?text=Prestasi+Akademik"
-                            alt="Prestasi" class="w-full h-full object-cover">
+                        <div class="p-4 text-center bg-gray-50">
+                            <h3 class="text-lg font-semibold text-gray-800">
+                                {{ $item->judul }}
+                            </h3>
+                        </div>
                     </div>
-                    <div class="p-5 text-center">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-1 mt-3">Juara 1 Olimpiade Matematika</h3>
-                        <p class="text-sm text-gray-600">Tingkat Kota Surabaya</p>
-                    </div>
-                </div>
 
-                <!-- Prestasi 4 -->
-                <div
-                    class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300">
-                    <div class="aspect-[4/3] bg-gray-200">
-                        <img src="https://via.placeholder.com/400x300/F59E0B/FFFFFF?text=Prestasi+Seni" alt="Prestasi"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-5 text-center">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-1 mt-3">Juara 3 Lomba Melukis</h3>
-                        <p class="text-sm text-gray-600">Festival Seni Sidoarjo</p>
-                    </div>
-                </div>
+                    <!-- MODAL -->
+                    <div
+                        x-show="open"
+                        x-transition
+                        class="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
+                        @click.self="open = false"
+                        x-cloak>
 
-            </div>
+                        <div class="bg-white rounded-xl max-w-lg w-full mx-4 overflow-hidden">
+
+                            <!-- FOTO -->
+                            <div class="aspect-[3/4] bg-gray-200">
+                                <img
+                                    src="{{ asset('storage/'.$item->foto) }}"
+                                    class="w-full h-full object-cover">
+                            </div>
+
+                            <!-- CONTENT -->
+                            <div class="p-6 text-center">
+                                <h3 class="text-2xl font-bold mb-2">
+                                    {{ $item->judul }}
+                                </h3>
+
+                                <p class="text-gray-600 text-sm mb-4">
+                                    {{ $item->deskripsi }}
+                                </p>
+
+                                <button
+                                    @click="open = false"
+                                    class="mt-2 px-5 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900">
+                                    Tutup
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            @endforeach
+
         </div>
-    </section>
-</body>
-
-</html>
+    </div>
+</section>
