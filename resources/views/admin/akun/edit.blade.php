@@ -21,31 +21,67 @@
         </nav>
     </div>
 
-    <div class="card">
-        <div class="card-body col-md-6">
+    <div class="card col-md-12 shadow-sm">
+      
+
+        <div class="card-body">
             <form method="POST" action="{{ route('akun.update', $account->id) }}">
                 @csrf
                 @method('PUT')
 
+                <!-- Nama -->
                 <div class="mb-3">
-                    <label>Nama</label>
-                    <input type="text" name="name" class="form-control" value="{{ $account->name }}" required>
+                    <label class="form-label">Nama</label>
+                    <input type="text"
+                        name="name"
+                        class="form-control @error('name') is-invalid @enderror"
+                        value="{{ old('name', $account->name) }}"
+                        required>
+                    @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
+                <!-- Email -->
                 <div class="mb-3">
-                    <label>Email</label>
-                    <input type="email" name="email" class="form-control" value="{{ $account->email }}" required>
+                    <label class="form-label">Email</label>
+                    <input type="email"
+                        name="email"
+                        class="form-control @error('email') is-invalid @enderror"
+                        value="{{ old('email', $account->email) }}"
+                        required>
+                    @error('email')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
-                <div class="mb-3">
-                    <label>Password (Opsional)</label>
-                    <input type="password" name="password" class="form-control">
+                <!-- Password -->
+                <div class="mb-4">
+                    <label class="form-label">Password (Opsional)</label>
+                    <input type="password"
+                        name="password"
+                        class="form-control @error('password') is-invalid @enderror"
+                        placeholder="Kosongkan jika tidak diubah">
+                    <small class="text-muted">
+                        Isi hanya jika ingin mengganti password
+                    </small>
+                    @error('password')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
-                <button class="btn btn-primary">Update</button>
-                <a href="{{ route('account') }}" class="btn btn-secondary">Kembali</a>
+                <!-- Button -->
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{{ route('account') }}" class="btn btn-secondary">
+                        Kembali
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        Update Data
+                    </button>
+                </div>
             </form>
         </div>
     </div>
+
 </div>
 @endsection

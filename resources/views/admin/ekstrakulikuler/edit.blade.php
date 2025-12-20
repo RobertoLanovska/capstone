@@ -21,26 +21,77 @@
         </nav>
     </div>
 
-    <div class="card col-md-6">
+    <div class="card col-md-12 shadow-sm">
+        
+
         <div class="card-body">
             <form method="POST"
-                  action="{{ route('ekstrakulikuler.update', $ekstrakulikuler->id) }}"
-                  enctype="multipart/form-data">
+                action="{{ route('ekstrakulikuler.update', $ekstrakulikuler->id) }}"
+                enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
-                <input class="form-control mb-2" name="nama" value="{{ $ekstrakulikuler->nama }}">
-                <input type="date"class="form-control mb-2" name="jadwal" value="{{ $ekstrakulikuler->jadwal }}">
-                
+                <!-- Nama Ekstrakurikuler -->
+                <div class="mb-3">
+                    <label class="form-label">Nama Ekstrakurikuler</label>
+                    <input type="text"
+                        name="nama"
+                        class="form-control @error('nama') is-invalid @enderror"
+                        value="{{ old('nama', $ekstrakulikuler->nama) }}"
+                        required>
+                    @error('nama')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
-                <label>Foto Kegiatan</label><br>
-                <img src="{{ asset('storage/'.$ekstrakulikuler->foto) }}" width="80" class="mb-2">
-                <input type="file" class="form-control mb-3" name="foto">
+                <!-- Jadwal -->
+                <div class="mb-3">
+                    <label class="form-label">Jadwal</label>
+                    <input type="date"
+                        name="jadwal"
+                        class="form-control @error('jadwal') is-invalid @enderror"
+                        value="{{ old('jadwal', $ekstrakulikuler->jadwal) }}"
+                        required>
+                    @error('jadwal')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
-                <button class="btn btn-primary">Update</button>
-                <a href="{{ route('ekstrakulikuler') }}" class="btn btn-secondary">Kembali</a>
+                <!-- Foto -->
+                <div class="mb-4">
+                    <label class="form-label">Foto Kegiatan</label>
+
+                    <div class="mb-2">
+                        <img src="{{ asset('storage/' . $ekstrakulikuler->foto) }}"
+                            alt="Foto Kegiatan"
+                            width="100"
+                            class="rounded border">
+                    </div>
+
+                    <input type="file"
+                        name="foto"
+                        class="form-control @error('foto') is-invalid @enderror">
+                    <small class="text-muted">
+                        Kosongkan jika tidak ingin mengganti foto
+                    </small>
+
+                    @error('foto')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Button -->
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{{ route('ekstrakulikuler') }}" class="btn btn-secondary">
+                        Kembali
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        Update Data
+                    </button>
+                </div>
             </form>
         </div>
     </div>
+
 </div>
 @endsection

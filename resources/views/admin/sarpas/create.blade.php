@@ -21,28 +21,55 @@
         </nav>
     </div>
 
-    <div class="card col-md-6">
-        <div class="card-body">
-            <form method="POST"
-                  action="{{ route('sarpas.store') }}"
-                  enctype="multipart/form-data">
-                @csrf
+    <div class="card col-md-12 shadow-sm">
 
-                <label>Nama Ruangan</label>
+
+    <div class="card-body">
+        <form method="POST"
+              action="{{ route('sarpas.store') }}"
+              enctype="multipart/form-data">
+            @csrf
+
+            <!-- Nama Ruangan -->
+            <div class="mb-3">
+                <label class="form-label">Nama Ruangan</label>
                 <input type="text"
-                       class="form-control mb-2"
-                       name="ruangan">
+                       name="ruangan"
+                       class="form-control @error('ruangan') is-invalid @enderror"
+                       placeholder="Contoh: Laboratorium Komputer"
+                       value="{{ old('ruangan') }}"
+                       required>
+                @error('ruangan')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
-                <label>Foto</label>
+            <!-- Foto -->
+            <div class="mb-4">
+                <label class="form-label">Foto Ruangan</label>
                 <input type="file"
-                       class="form-control mb-3"
-                       name="foto">
+                       name="foto"
+                       class="form-control @error('foto') is-invalid @enderror">
+                <small class="text-muted">
+                    Format: JPG, PNG (max 2MB)
+                </small>
+                @error('foto')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
-                <button class="btn btn-primary">Simpan</button>
-                <a href="{{ route('sarpas') }}"
-                   class="btn btn-secondary">Kembali</a>
-            </form>
-        </div>
+            <!-- Button -->
+            <div class="d-flex justify-content-end gap-2">
+                <a href="{{ route('sarpas') }}" class="btn btn-secondary">
+                    Kembali
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    Simpan Data
+                </button>
+            </div>
+        </form>
     </div>
+</div>
+
 </div>
 @endsection

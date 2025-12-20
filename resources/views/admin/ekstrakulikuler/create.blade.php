@@ -29,25 +29,69 @@
             </ol>
         </nav>
     </div>
+    
+    <div class="card col-md-12 shadow-sm">
+ 
 
-    <div class="card col-md-6">
-        <div class="card-body">
-            <form method="POST"
-                  action="{{ route('ekstrakulikuler.store') }}"
-                  enctype="multipart/form-data">
-                @csrf
+    <div class="card-body">
+        <form method="POST"
+              action="{{ route('ekstrakulikuler.store') }}"
+              enctype="multipart/form-data">
+            @csrf
 
-                <input class="form-control mb-2" name="nama" placeholder="Nama">
-                <input type="date"class="form-control mb-2" name="jadwal" placeholder="Jadwal">
-              
+            <!-- Nama Ekstrakurikuler -->
+            <div class="mb-3">
+                <label class="form-label">Nama Ekstrakurikuler</label>
+                <input type="text"
+                       name="nama"
+                       class="form-control @error('nama') is-invalid @enderror"
+                       placeholder="Contoh: Pramuka"
+                       value="{{ old('nama') }}"
+                       required>
+                @error('nama')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
-                <label>Foto Profil</label>
-                <input type="file" class="form-control mb-3" name="foto">
+            <!-- Jadwal -->
+            <div class="mb-3">
+                <label class="form-label">Jadwal</label>
+                <input type="date"
+                       name="jadwal"
+                       class="form-control @error('jadwal') is-invalid @enderror"
+                       value="{{ old('jadwal') }}"
+                       required>
+                @error('jadwal')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
-                <button class="btn btn-primary">Simpan</button>
-                <a href="{{ route('ekstrakulikuler') }}" class="btn btn-secondary">Kembali</a>
-            </form>
-        </div>
+            <!-- Foto -->
+            <div class="mb-4">
+                <label class="form-label">Foto Ekstrakurikuler</label>
+                <input type="file"
+                       name="foto"
+                       class="form-control @error('foto') is-invalid @enderror">
+                <small class="text-muted">
+                    Format: JPG, PNG (max 2MB)
+                </small>
+                @error('foto')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Button -->
+            <div class="d-flex justify-content-end gap-2">
+                <a href="{{ route('ekstrakulikuler') }}" class="btn btn-secondary">
+                    Kembali
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    Simpan Data
+                </button>
+            </div>
+        </form>
     </div>
+</div>
+
 </div>
 @endsection

@@ -21,21 +21,101 @@
         </nav>
     </div>
 
-    <div class="card col-md-6">
+    <div class="card col-md-12 shadow-sm">
+       
+
         <div class="card-body">
             <form method="POST" action="{{ route('siswa_5.update', $siswa_5->id) }}">
                 @csrf
                 @method('PUT')
 
-                <input class="form-control mb-2" name="nama" value="{{ $siswa_5->nama }}">
-                <input class="form-control mb-2" name="nisn" value="{{ $siswa_5->nisn }}">
-                <input class="form-control mb-2" name="alamat" value="{{ $siswa_5->alamat }}">
-                <input type="date" class="form-control mb-2" name="tanggal_lahir" value="{{ $siswa_5->tanggal_lahir }}">
-                <input class="form-control mb-2" name="wali_murid" value="{{ $siswa_5->wali_murid }}">
-                <input class="form-control mb-3" name="telepon" value="{{ $siswa_5->telepon }}">
+                <!-- Nama -->
+                <div class="mb-3">
+                    <label class="form-label">Nama Siswa</label>
+                    <input type="text"
+                        name="nama"
+                        class="form-control @error('nama') is-invalid @enderror"
+                        value="{{ old('nama', $siswa_5->nama) }}"
+                        required>
+                    @error('nama')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
-                <button class="btn btn-primary">Update</button>
-                <a href="{{ route('siswa_5') }}" class="btn btn-secondary">Kembali</a>
+                <!-- NISN -->
+                <div class="mb-3">
+                    <label class="form-label">NISN</label>
+                    <input type="text"
+                        name="nisn"
+                        class="form-control @error('nisn') is-invalid @enderror"
+                        value="{{ old('nisn', $siswa_5->nisn) }}"
+                        required>
+                    @error('nisn')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Alamat -->
+                <div class="mb-3">
+                    <label class="form-label">Alamat</label>
+                    <input type="text"
+                        name="alamat"
+                        class="form-control @error('alamat') is-invalid @enderror"
+                        value="{{ old('alamat', $siswa_5->alamat) }}"
+                        required>
+                    @error('alamat')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Tanggal Lahir -->
+                <div class="mb-3">
+                    <label class="form-label">Tanggal Lahir</label>
+                    <input type="date"
+                        name="tanggal_lahir"
+                        class="form-control @error('tanggal_lahir') is-invalid @enderror"
+                        value="{{ old('tanggal_lahir', $siswa_5->tanggal_lahir) }}"
+                        required>
+                    @error('tanggal_lahir')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Wali Murid -->
+                <div class="mb-3">
+                    <label class="form-label">Nama Wali Murid</label>
+                    <input type="text"
+                        name="wali_murid"
+                        class="form-control @error('wali_murid') is-invalid @enderror"
+                        value="{{ old('wali_murid', $siswa_5->wali_murid) }}"
+                        required>
+                    @error('wali_murid')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Telepon -->
+                <div class="mb-4">
+                    <label class="form-label">Telepon</label>
+                    <input type="text"
+                        name="telepon"
+                        class="form-control @error('telepon') is-invalid @enderror"
+                        value="{{ old('telepon', $siswa_5->telepon) }}"
+                        required>
+                    @error('telepon')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Button -->
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{{ route('siswa_5') }}" class="btn btn-secondary">
+                        Kembali
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        Update Data
+                    </button>
+                </div>
             </form>
         </div>
     </div>

@@ -21,32 +21,68 @@
         </nav>
     </div>
 
-    <div class="card col-md-6">
+   <div class="card col-md-12 shadow-sm">
+        
+
         <div class="card-body">
             <form method="POST"
-                  action="{{ route('prestasi.store') }}"
-                  enctype="multipart/form-data">
+                action="{{ route('prestasi.store') }}"
+                enctype="multipart/form-data">
                 @csrf
 
-                <input type="text"
-                       class="form-control mb-2"
-                       name="judul"
-                       placeholder="Judul">
+                <!-- Judul -->
+                <div class="mb-3">
+                    <label class="form-label">Judul Prestasi</label>
+                    <input type="text"
+                        name="judul"
+                        class="form-control @error('judul') is-invalid @enderror"
+                        placeholder="Contoh: Juara 1 Lomba Sains"
+                        value="{{ old('judul') }}"
+                        required>
+                    @error('judul')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
-                <textarea class="form-control mb-2"
-                          name="deskripsi"
-                          placeholder="Deskripsi"></textarea>
+                <!-- Deskripsi -->
+                <div class="mb-3">
+                    <label class="form-label">Deskripsi</label>
+                    <textarea name="deskripsi"
+                            class="form-control @error('deskripsi') is-invalid @enderror"
+                            rows="3"
+                            placeholder="Deskripsi prestasi"
+                            required>{{ old('deskripsi') }}</textarea>
+                    @error('deskripsi')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
-                <label>Foto</label>
-                <input type="file"
-                       class="form-control mb-3"
-                       name="foto">
+                <!-- Foto -->
+                <div class="mb-4">
+                    <label class="form-label">Foto Prestasi</label>
+                    <input type="file"
+                        name="foto"
+                        class="form-control @error('foto') is-invalid @enderror">
+                    <small class="text-muted">
+                        Format: JPG, PNG (max 2MB)
+                    </small>
+                    @error('foto')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
-                <button class="btn btn-primary">Simpan</button>
-                <a href="{{ route('prestasi') }}"
-                   class="btn btn-secondary">Kembali</a>
+                <!-- Button -->
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{{ route('prestasi') }}" class="btn btn-secondary">
+                        Kembali
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        Simpan Data
+                    </button>
+                </div>
             </form>
         </div>
     </div>
+
 </div>
 @endsection

@@ -23,25 +23,94 @@
     </div>
   
 
-    <div class="card col-md-6">
+    <div class="card col-md-12 shadow-sm">
+       
+
         <div class="card-body">
             <form method="POST"
-                  action="{{ route('guru.store') }}"
-                  enctype="multipart/form-data">
+                action="{{ route('guru.store') }}"
+                enctype="multipart/form-data">
                 @csrf
 
-                <input class="form-control mb-2" name="nama" placeholder="Nama">
-                <input class="form-control mb-2" name="jabatan" placeholder="Jabatan">
-                <textarea class="form-control mb-2" name="alamat" placeholder="Alamat"></textarea>
-                <input class="form-control mb-2" name="telepon" placeholder="Telepon">
+                <!-- Nama -->
+                <div class="mb-3">
+                    <label class="form-label">Nama</label>
+                    <input type="text"
+                        name="nama"
+                        class="form-control @error('nama') is-invalid @enderror"
+                        placeholder="Masukkan nama lengkap"
+                        value="{{ old('nama') }}"
+                        required>
+                    @error('nama')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
-                <label>Foto Profil</label>
-                <input type="file" class="form-control mb-3" name="profile">
+                <!-- Jabatan -->
+                <div class="mb-3">
+                    <label class="form-label">Jabatan</label>
+                    <input type="text"
+                        name="jabatan"
+                        class="form-control @error('jabatan') is-invalid @enderror"
+                        placeholder="Contoh: Guru Matematika"
+                        value="{{ old('jabatan') }}"
+                        required>
+                    @error('jabatan')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
-                <button class="btn btn-primary">Simpan</button>
-                <a href="{{ route('guru') }}" class="btn btn-secondary">Kembali</a>
+                <!-- Alamat -->
+                <div class="mb-3">
+                    <label class="form-label">Alamat</label>
+                    <textarea name="alamat"
+                            class="form-control @error('alamat') is-invalid @enderror"
+                            rows="3"
+                            placeholder="Masukkan alamat lengkap"
+                            required>{{ old('alamat') }}</textarea>
+                    @error('alamat')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Telepon -->
+                <div class="mb-3">
+                    <label class="form-label">Telepon</label>
+                    <input type="text"
+                        name="telepon"
+                        class="form-control @error('telepon') is-invalid @enderror"
+                        placeholder="08xxxxxxxxxx"
+                        value="{{ old('telepon') }}"
+                        required>
+                    @error('telepon')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Foto Profil -->
+                <div class="mb-4">
+                    <label class="form-label">Foto Profil</label>
+                    <input type="file"
+                        name="profile"
+                        class="form-control @error('profile') is-invalid @enderror">
+                    <small class="text-muted">Format: JPG, PNG (max 2MB)</small>
+                    @error('profile')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Button -->
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{{ route('guru') }}" class="btn btn-secondary">
+                        Kembali
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        Simpan Data
+                    </button>
+                </div>
             </form>
         </div>
     </div>
+
 </div>
 @endsection
