@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\EkstrakulikulerController;
@@ -17,7 +18,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/ubah-password', [AuthController::class, 'showUbahPassword'])->name('password.form');
 Route::post('/ubah-password', [AuthController::class, 'updatePassword'])->name('password.update');
 Route::middleware(['admin'])->group(function () {
-    Route::get('/admin', fn() => view('admin.dashboard'));
+    
+    Route::get('/admin', [DashboardController::class, 'index'])->name('admin');
     Route::get('/akun', [AuthController::class, 'account'])->name('account');
     Route::get('/akun/create', [AuthController::class, 'create'])->name('akun.create');
     Route::post('/akun', [AuthController::class, 'store'])->name('akun.store');
