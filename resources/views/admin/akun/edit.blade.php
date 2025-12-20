@@ -15,7 +15,7 @@
                     <a href="/akun">Akun</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    Create
+                    Edit
                 </li>
             </ol>
         </nav>

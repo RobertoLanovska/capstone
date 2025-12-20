@@ -3,8 +3,24 @@
 <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
 
 @section('content')
-    <div class="page-heading">
-        <h3>Tambah Berita</h3>
+        <div class="page-heading">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="mb-0">Tambah Berita</h3>
+
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a href="/admin">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item" aria-current="page">
+                        <a href="/berita">Berita</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Create
+                    </li>
+                </ol>
+            </nav>
+        </div>
 
         <div class="card col-md-6">
             <div class="card-body">

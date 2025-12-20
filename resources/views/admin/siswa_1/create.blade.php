@@ -3,7 +3,23 @@
 
 @section('content')
 <div class="page-heading">
-    <h3>Tambah Siswa</h3>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Tambah Data Siswa Kelas 1</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">
+                    <a href="/admin">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="/siswa/kelas-1">Siswa Kelas 1</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Create
+                </li>
+            </ol>
+        </nav>
+    </div>
 
     <div class="card col-md-6">
         <div class="card-body">

@@ -15,12 +15,23 @@
     </div>
 
     <a href="{{ route('siswa_5.create') }}" class="btn btn-primary mb-3">
-        + Tambah Siswa
+         Tambah Siswa
     </a>
 
     <div class="card">
         <div class="card-body">
-            <table class="table table-striped">
+            <div class="row mb-3 ">
+                <div class="col-md-4">
+                    <input type="text"
+                    id="searchInput"
+                    class="form-control"
+                    placeholder="Cari"
+                    onkeyup="searchTable()">
+
+                </div>
+              
+            </div>
+            <table class="table table-striped" id="accountTable">
                 <thead>
                 <tr>
                     <th>Nama</th>
@@ -61,4 +72,37 @@
         </div>
     </div>
 </div>
+<script>
+function searchTable() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let table = document.getElementById("accountTable");
+    let rows = table.getElementsByTagName("tr");
+
+     for (let i = 1; i < rows.length; i++) {
+        let nama = rows[i].getElementsByTagName("td")[0];
+        let nisn = rows[i].getElementsByTagName("td")[1];
+        let alamat = rows[i].getElementsByTagName("td")[2];
+        let tglLahir = rows[i].getElementsByTagName("td")[3];
+        let wali = rows[i].getElementsByTagName("td")[4];
+        let telepon = rows[i].getElementsByTagName("td")[5];
+
+        if (nama && nisn && alamat && tglLahir && wali && telepon) {
+            let textNama = nama.textContent.toLowerCase();
+            let textNisn = nisn.textContent.toLowerCase();
+            let textAlamat = alamat.textContent.toLowerCase();
+            let textTglLahir = tglLahir.textContent.toLowerCase();
+            let textWali = wali.textContent.toLowerCase();
+            let textTelepon = telepon.textContent.toLowerCase();
+
+            if (textNama.includes(input) || textNisn.includes(input) || textAlamat.includes(input) 
+                || textTglLahir.includes(input) || textWali.includes(input) || textTelepon.includes(input)
+                ) {
+                rows[i].style.display = "";
+            } else {
+                rows[i].style.display = "none";
+            }
+        }
+    }
+}
+</script>
 @endsection

@@ -12,7 +12,23 @@
 @endif
 
 <div class="page-heading">
-    <h3>Tambah Data Ekstrakulikuler</h3>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Tambah Data Ekstrakulikuler</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">
+                    <a href="/admin">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="/ekstrakulikuler">Ekstrakulikuler</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Create
+                </li>
+            </ol>
+        </nav>
+    </div>
 
     <div class="card col-md-6">
         <div class="card-body">
@@ -22,7 +38,7 @@
                 @csrf
 
                 <input class="form-control mb-2" name="nama" placeholder="Nama">
-                <input type="string"class="form-control mb-2" name="jadwal" placeholder="Jadwal">
+                <input type="date"class="form-control mb-2" name="jadwal" placeholder="Jadwal">
               
 
                 <label>Foto Profil</label>
