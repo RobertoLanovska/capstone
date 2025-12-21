@@ -132,7 +132,7 @@
                         });
                     });
                 }
-                </script>
+            </script>
 
 
 
@@ -141,14 +141,5 @@
 
 </div>
 @endsection
-@if(session('success'))
-<script>
-Swal.fire({
-    icon: 'success',
-    title: 'Berhasil',
-    text: '{{ session('success') }}',
-    confirmButtonColor: '#2563eb'
-});
-</script>
-@endif
+
 

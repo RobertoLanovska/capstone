@@ -44,8 +44,10 @@ class SiswaController extends Controller
 
         Siswa_1::create($request->all());
 
-        return redirect()->route('siswa_1')
-            ->with('success', 'Data siswa berhasil ditambahkan');
+         return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     public function edit_1($id)
@@ -70,16 +72,20 @@ class SiswaController extends Controller
 
         $siswa_1->update($request->all());
 
-        return redirect()->route('siswa_1')
-            ->with('success', 'Data siswa berhasil diperbarui');
+         return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     public function destroy_1($id)
     {
         Siswa_1::findOrFail($id)->delete();
 
-        return redirect()->route('siswa_1')
-            ->with('success', 'Data siswa berhasil dihapus');
+         return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     //Siswa 2
@@ -110,8 +116,10 @@ class SiswaController extends Controller
 
         Siswa_2::create($request->all());
 
-        return redirect()->route('siswa_2')
-            ->with('success', 'Data siswa berhasil ditambahkan');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     public function edit_2($id)
@@ -136,16 +144,20 @@ class SiswaController extends Controller
 
         $siswa_2->update($request->all());
 
-        return redirect()->route('siswa_2')
-            ->with('success', 'Data siswa berhasil diperbarui');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     public function destroy_2($id)
     {
         Siswa_2::findOrFail($id)->delete();
 
-        return redirect()->route('siswa_2')
-            ->with('success', 'Data siswa berhasil dihapus');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     //Siswa 3
@@ -175,8 +187,10 @@ class SiswaController extends Controller
 
         Siswa_3::create($request->all());
 
-        return redirect()->route('siswa_3')
-            ->with('success', 'Data siswa berhasil ditambahkan');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     public function edit_3($id)
@@ -201,16 +215,20 @@ class SiswaController extends Controller
 
         $siswa_3->update($request->all());
 
-        return redirect()->route('siswa_3')
-            ->with('success', 'Data siswa berhasil diperbarui');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     public function destroy_3($id)
     {
         Siswa_3::findOrFail($id)->delete();
 
-        return redirect()->route('siswa_3')
-            ->with('success', 'Data siswa berhasil dihapus');
+       return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     //Siswa 4
@@ -241,8 +259,10 @@ class SiswaController extends Controller
 
         Siswa_4::create($request->all());
 
-        return redirect()->route('siswa_4')
-            ->with('success', 'Data siswa berhasil ditambahkan');
+       return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     public function edit_4($id)
@@ -267,16 +287,20 @@ class SiswaController extends Controller
 
         $siswa_4->update($request->all());
 
-        return redirect()->route('siswa_4')
-            ->with('success', 'Data siswa berhasil diperbarui');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     public function destroy_4($id)
     {
         Siswa_4::findOrFail($id)->delete();
 
-        return redirect()->route('siswa_4')
-            ->with('success', 'Data siswa berhasil dihapus');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     //Siswa 5
@@ -306,8 +330,10 @@ class SiswaController extends Controller
 
         Siswa_5::create($request->all());
 
-        return redirect()->route('siswa_5')
-            ->with('success', 'Data siswa berhasil ditambahkan');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     public function edit_5($id)
@@ -332,16 +358,20 @@ class SiswaController extends Controller
 
         $siswa_5->update($request->all());
 
-        return redirect()->route('siswa_5')
-            ->with('success', 'Data siswa berhasil diperbarui');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     public function destroy_5($id)
     {
         Siswa_5::findOrFail($id)->delete();
 
-        return redirect()->route('siswa_5')
-            ->with('success', 'Data siswa berhasil dihapus');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     //Siswa 6
@@ -371,8 +401,10 @@ class SiswaController extends Controller
 
         Siswa_6::create($request->all());
 
-        return redirect()->route('siswa_6')
-            ->with('success', 'Data siswa berhasil ditambahkan');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     public function edit_6($id)
@@ -397,16 +429,20 @@ class SiswaController extends Controller
 
         $siswa_6->update($request->all());
 
-        return redirect()->route('siswa_6')
-            ->with('success', 'Data siswa berhasil diperbarui');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     public function destroy_6($id)
     {
         Siswa_6::findOrFail($id)->delete();
 
-        return redirect()->route('siswa_6')
-            ->with('success', 'Data siswa berhasil dihapus');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     //export siswa 1

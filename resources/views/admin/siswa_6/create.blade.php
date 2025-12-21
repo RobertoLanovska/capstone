@@ -25,7 +25,9 @@
     
 
         <div class="card-body">
-            <form method="POST" action="{{ route('siswa_6.store') }}">
+            <form id="formTambahSiswa6"
+                method="POST"
+            action="{{ route('siswa_6.store') }}">
                 @csrf
 
                 <!-- Nama -->
@@ -110,8 +112,8 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-
-                 <div class="mb-3">
+                <!-- Tanggal Masuk -->
+                <div class="mb-3">
                     <label class="form-label">Tanggal Masuk Siswa</label>
                     <input type="date"
                         name="tanggal_masuk"
@@ -124,15 +126,65 @@
                 </div>
 
                 <!-- Button -->
-                <div class="d-flex justify-content-end gap-6">
+                <div class="d-flex justify-content-end gap-2">
                     <a href="{{ route('siswa_6') }}" class="btn btn-secondary">
                         Kembali
                     </a>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary" onclick="confirmSave()">
                         Simpan Data
                     </button>
                 </div>
             </form>
+             <script>
+                function confirmSave() {
+                    Swal.fire({
+                        title: 'Simpan Data?',
+                        text: 'Apakah Anda yakin ingin menyimpan data ini?',
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya, Simpan',
+                        cancelButtonText: 'Batal',
+                        confirmButtonColor: '#2563eb',
+                        cancelButtonColor: '#6c757d'
+                    }).then((result) => {
+                        if (!result.isConfirmed) return;
+
+                        let form = document.getElementById('formTambahSiswa6');
+                        let formData = new FormData(form);
+
+                        fetch(form.action, {
+                            method: "POST",
+                            headers: {
+                                "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                                "Accept": "application/json"
+                            },
+                            body: formData
+                        })
+                        .then(res => {
+                            if (!res.ok) throw res;
+                            return res.json();
+                        })
+                        .then(() => {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: 'Data siswa berhasil disimpan',
+                                confirmButtonColor: '#2563eb'
+                            }).then(() => {
+                                window.location.href = "{{ route('siswa_6') }}";
+                            });
+                        })
+                        .catch(async err => {
+                            let res = await err.json();
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Gagal',
+                                text: res.message ?? 'Terjadi kesalahan'
+                            });
+                        });
+                    });
+                }
+            </script>
         </div>
     </div>
 </div>

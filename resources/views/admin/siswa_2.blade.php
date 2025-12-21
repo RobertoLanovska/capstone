@@ -15,12 +15,13 @@
     </div>
 
     <a href="{{ route('siswa_2.create') }}" class="btn btn-primary mb-3">
-        Tambah Siswa
+         Tambah Siswa
     </a>
     <a href="{{ route('siswa_2.export.excel') }}"
         class="btn btn-success mb-3">
         <i class="bi bi-file-earmark-excel"></i> Download Excel
     </a>
+
 
     <div class="card">
         <div class="card-body">
@@ -57,19 +58,23 @@
                     <td>{{ $item->tanggal_lahir }}</td>
                     <td>{{ $item->wali_murid }}</td>
                     <td>{{ $item->telepon }}</td>
-                    <td>{{ $item->tanggal_lahir }}</td>
+                    <td>{{ $item->tanggal_masuk }}</td>
                     <td>
                         <a href="{{ route('siswa_2.edit', $item->id) }}"
                            class="btn btn-sm btn-warning">Edit</a>
 
-                        <form action="{{ route('siswa_2.destroy', $item->id) }}"
-                              method="POST"
-                              class="d-inline"
-                              onsubmit="return confirm('Hapus data siswa?')">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-sm btn-danger">Hapus</button>
-                        </form>
+                        <button class="btn btn-sm btn-danger"
+                                    onclick="confirmDelete({{ $item->id }})">
+                                Hapus
+                        </button>
+
+                            <form id="delete-form-{{ $item->id }}"
+                                action="{{ route('siswa_2.destroy', $item->id) }}"
+                                method="POST"
+                                class="d-none">
+                                @csrf
+                                @method('DELETE')
+                            </form>
                     </td>
                 </tr>
                 @endforeach
@@ -78,7 +83,6 @@
         </div>
     </div>
 </div>
-
 <script>
 function searchTable() {
     let input = document.getElementById("searchInput").value.toLowerCase();
@@ -113,5 +117,53 @@ function searchTable() {
         }
     }
 }
+</script>
+<script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Hapus siswa?',
+            text: 'Data siswa yang dihapus tidak dapat dikembalikan!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Ya, Hapus',
+            cancelButtonText: 'Batal',
+            confirmButtonColor: '#dc2626',
+            cancelButtonColor: '#6c757d'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(
+                    document.getElementById(`delete-form-${id}`).action,
+                    {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'Accept': 'application/json'
+                        },
+                        body: new URLSearchParams({
+                            _method: 'DELETE'
+                        })
+                    }
+                )
+                .then(response => response.json())
+                .then(data => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: 'data siswa berhasil dihapus',
+                        confirmButtonColor: '#2563eb'
+                    }).then(() => {
+                        location.reload(); // atau redirect
+                    });
+                })
+                .catch(() => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal',
+                        text: 'Gagal menghapus siswa'
+                    });
+                });
+            }
+        });
+    }
 </script>
 @endsection

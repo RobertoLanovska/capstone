@@ -25,7 +25,8 @@
         
 
         <div class="card-body">
-            <form method="POST"
+            <form id="formEditPrestasi"
+                method="POST"
                 action="{{ route('prestasi.update', $prestasi->id) }}"
                 enctype="multipart/form-data">
                 @csrf
@@ -84,11 +85,61 @@
                     <a href="{{ route('prestasi') }}" class="btn btn-secondary">
                         Kembali
                     </a>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary" onclick="confirmSave()">
                         Update Data
                     </button>
                 </div>
             </form>
+            <script>
+                function confirmSave() {
+                    Swal.fire({
+                        title: 'Simpan Data?',
+                        text: 'Apakah Anda yakin ingin memperbarui data ini?',
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya, Simpan',
+                        cancelButtonText: 'Batal',
+                        confirmButtonColor: '#2563eb',
+                        cancelButtonColor: '#6c757d'
+                    }).then((result) => {
+                        if (!result.isConfirmed) return;
+
+                        let form = document.getElementById('formEditPrestasi');
+                        let formData = new FormData(form);
+
+                        fetch(form.action, {
+                            method: "POST",
+                            headers: {
+                                "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                                "Accept": "application/json"
+                            },
+                            body: formData
+                        })
+                        .then(res => {
+                            if (!res.ok) throw res;
+                            return res.json();
+                        })
+                        .then(() => {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: 'Data prestasi berhasil diperbarui',
+                                confirmButtonColor: '#2563eb'
+                            }).then(() => {
+                                window.location.href = "{{ route('prestasi') }}";
+                            });
+                        })
+                        .catch(async err => {
+                            let res = await err.json();
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Gagal',
+                                text: res.message ?? 'Terjadi kesalahan'
+                            });
+                        });
+                    });
+                }
+            </script>
         </div>
     </div>
 

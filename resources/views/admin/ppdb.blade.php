@@ -58,14 +58,18 @@
                         <a href="{{ route('ppdb.edit', $item->id) }}"
                            class="btn btn-sm btn-warning">Edit</a>
 
-                        <form action="{{ route('ppdb.destroy', $item->id) }}"
-                              method="POST"
-                              class="d-inline"
-                              onsubmit="return confirm('Hapus data PPDB ini?')">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-sm btn-danger">Hapus</button>
-                        </form>
+                        <button class="btn btn-sm btn-danger"
+                                    onclick="confirmDelete({{ $item->id }})">
+                                Hapus
+                        </button>
+
+                            <form id="delete-form-{{ $item->id }}"
+                                action="{{ route('ppdb.destroy', $item->id) }}"
+                                method="POST"
+                                class="d-none">
+                                @csrf
+                                @method('DELETE')
+                            </form>
                     </td>
                 </tr>
                 @endforeach
@@ -96,5 +100,53 @@ function searchTable() {
         }
     }
 }
+</script>
+<script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Hapus ppdb?',
+            text: 'Data ppdb yang dihapus tidak dapat dikembalikan!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Ya, Hapus',
+            cancelButtonText: 'Batal',
+            confirmButtonColor: '#dc2626',
+            cancelButtonColor: '#6c757d'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(
+                    document.getElementById(`delete-form-${id}`).action,
+                    {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'Accept': 'application/json'
+                        },
+                        body: new URLSearchParams({
+                            _method: 'DELETE'
+                        })
+                    }
+                )
+                .then(response => response.json())
+                .then(data => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: 'ppdb berhasil dihapus',
+                        confirmButtonColor: '#2563eb'
+                    }).then(() => {
+                        location.reload(); // atau redirect
+                    });
+                })
+                .catch(() => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal',
+                        text: 'Gagal menghapus ppdb'
+                    });
+                });
+            }
+        });
+    }
 </script>
 @endsection
