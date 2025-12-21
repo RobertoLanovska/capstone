@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('tanggal_lahir');
             $table->string('wali_murid');
             $table->string('telepon');
+            $table->date('tanggal_masuk');
             $table->timestamps();
         });
     }

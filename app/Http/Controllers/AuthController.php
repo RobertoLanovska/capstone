@@ -98,19 +98,23 @@ class AuthController extends Controller
      public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+            'name'     => 'required',
+            'email'    => 'required|email|unique:users,email',
+            'password' => 'required|min:8',
         ]);
 
         User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'password' => bcrypt($request->password),
         ]);
 
-        return redirect()->route('account')->with('success', 'Akun berhasil ditambahkan');
+        return response()->json([
+            'status'  => true,
+            'message' => 'Data berhasil disimpan'
+        ]);
     }
+
     public function edit($id)
     {
         $account = User::findOrFail($id);

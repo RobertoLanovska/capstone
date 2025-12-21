@@ -83,6 +83,18 @@ Route::middleware(['admin'])->group(function () {
 
     Route::delete('/siswa/kelas-6/{id}', [SiswaController::class, 'destroy_6'])->name('siswa_6.destroy');
 
+    Route::get('/siswa-1/export-excel', [SiswaController::class, 'exportExcel1'])
+    ->name('siswa_1.export.excel');
+    Route::get('/siswa-2/export-excel', [SiswaController::class, 'exportExcel2'])
+    ->name('siswa_2.export.excel');
+    Route::get('/siswa-3/export-excel', [SiswaController::class, 'exportExcel3'])
+    ->name('siswa_3.export.excel');
+    Route::get('/siswa-4/export-excel', [SiswaController::class, 'exportExcel4'])
+    ->name('siswa_4.export.excel');
+    Route::get('/siswa-5/export-excel', [SiswaController::class, 'exportExcel5'])
+    ->name('siswa_5.export.excel');
+    Route::get('/siswa-6/export-excel', [SiswaController::class, 'exportExcel6'])
+    ->name('siswa_6.export.excel');
     Route::get('/guru', [GuruController::class, 'index'])->name('guru');
     Route::get('/guru/create', [GuruController::class, 'create'])->name('guru.create');
     Route::post('/guru', [GuruController::class, 'store'])->name('guru.store');

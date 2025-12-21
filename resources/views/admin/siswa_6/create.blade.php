@@ -111,6 +111,18 @@
                     @enderror
                 </div>
 
+                 <div class="mb-3">
+                    <label class="form-label">Tanggal Masuk Siswa</label>
+                    <input type="date"
+                        name="tanggal_masuk"
+                        class="form-control @error('tanggal_masuk') is-invalid @enderror"
+                        value="{{ old('tanggal_masuk') }}"
+                        required>
+                    @error('tanggal_masuk')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 <!-- Button -->
                 <div class="d-flex justify-content-end gap-6">
                     <a href="{{ route('siswa_6') }}" class="btn btn-secondary">

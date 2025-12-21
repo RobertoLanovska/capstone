@@ -9,6 +9,13 @@ use App\Models\Siswa_3;
 use App\Models\Siswa_4;
 use App\Models\Siswa_5;
 use App\Models\Siswa_6;
+use App\Exports\Siswa1Export;
+use App\Exports\Siswa2Export;
+use App\Exports\Siswa3Export;
+use App\Exports\Siswa4Export;
+use App\Exports\Siswa5Export;
+use App\Exports\Siswa6Export;
+use Maatwebsite\Excel\Facades\Excel;
 class SiswaController extends Controller
 {
     // Siswa 1
@@ -32,6 +39,7 @@ class SiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
             'telepon' => 'required',
+            'tanggal_masuk' => 'required|date',
         ]);
 
         Siswa_1::create($request->all());
@@ -57,6 +65,7 @@ class SiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
             'telepon' => 'required',
+            'tanggal_masuk' => 'required|date',
         ]);
 
         $siswa_1->update($request->all());
@@ -96,6 +105,7 @@ class SiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
             'telepon' => 'required',
+            'tanggal_masuk' => 'required|date',
         ]);
 
         Siswa_2::create($request->all());
@@ -121,6 +131,7 @@ class SiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
             'telepon' => 'required',
+            'tanggal_masuk' => 'required|date',
         ]);
 
         $siswa_2->update($request->all());
@@ -159,6 +170,7 @@ class SiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
             'telepon' => 'required',
+            'tanggal_masuk' => 'required|date',
         ]);
 
         Siswa_3::create($request->all());
@@ -184,6 +196,7 @@ class SiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
             'telepon' => 'required',
+            'tanggal_masuk' => 'required|date',
         ]);
 
         $siswa_3->update($request->all());
@@ -222,6 +235,8 @@ class SiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
             'telepon' => 'required',
+            'tanggal_masuk' => 'required|date',
+            
         ]);
 
         Siswa_4::create($request->all());
@@ -247,6 +262,7 @@ class SiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
             'telepon' => 'required',
+            'tanggal_masuk' => 'required|date',
         ]);
 
         $siswa_4->update($request->all());
@@ -285,6 +301,7 @@ class SiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
             'telepon' => 'required',
+            'tanggal_masuk' => 'required|date',
         ]);
 
         Siswa_5::create($request->all());
@@ -310,6 +327,7 @@ class SiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
             'telepon' => 'required',
+            'tanggal_masuk' => 'required|date',
         ]);
 
         $siswa_5->update($request->all());
@@ -348,6 +366,7 @@ class SiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
             'telepon' => 'required',
+            'tanggal_masuk' => 'required|date',
         ]);
 
         Siswa_6::create($request->all());
@@ -373,6 +392,7 @@ class SiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
             'telepon' => 'required',
+            'tanggal_masuk' => 'required|date',
         ]);
 
         $siswa_6->update($request->all());
@@ -387,5 +407,54 @@ class SiswaController extends Controller
 
         return redirect()->route('siswa_6')
             ->with('success', 'Data siswa berhasil dihapus');
+    }
+
+    //export siswa 1
+    public function exportExcel1()
+    {
+        return Excel::download(
+            new Siswa1Export,
+            'data_siswa_kelas_1.xlsx'
+        );
+    }
+    //export siswa 2
+    public function exportExcel2()
+    {
+        return Excel::download(
+            new Siswa2Export,
+            'data_siswa_kelas_2.xlsx'
+        );
+    }
+    //export siswa 3
+    public function exportExcel3()
+    {
+        return Excel::download(
+            new Siswa3Export,
+            'data_siswa_kelas_3.xlsx'
+        );
+    }
+    //export siswa 4
+    public function exportExcel4()
+    {
+        return Excel::download(
+            new Siswa4Export,
+            'data_siswa_kelas_4.xlsx'
+        );
+    }
+    //export siswa 5
+    public function exportExcel5()
+    {
+        return Excel::download(
+            new Siswa5Export,
+            'data_siswa_kelas_5.xlsx'
+        );
+    }
+    //export siswa 6
+    public function exportExcel6()
+    {
+        return Excel::download(
+            new Siswa6Export,
+            'data_siswa_kelas_6.xlsx'
+        );
     }
 }

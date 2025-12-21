@@ -17,6 +17,10 @@
     <a href="{{ route('siswa_4.create') }}" class="btn btn-primary mb-3">
          Tambah Siswa
     </a>
+    <a href="{{ route('siswa_4.export.excel') }}"
+        class="btn btn-success mb-3">
+        <i class="bi bi-file-earmark-excel"></i> Download Excel
+    </a>
 
     <div class="card">
         <div class="card-body">
@@ -40,6 +44,7 @@
                     <th>Tgl Lahir</th>
                     <th>Wali</th>
                     <th>Telepon</th>
+                    <th>Tgl Masuk</th>
                     <th width="150">Aksi</th>
                 </tr>
                 </thead>
@@ -52,6 +57,7 @@
                     <td>{{ $item->tanggal_lahir }}</td>
                     <td>{{ $item->wali_murid }}</td>
                     <td>{{ $item->telepon }}</td>
+                    <td>{{ $item->tanggal_lahir }}</td>
                     <td>
                         <a href="{{ route('siswa_4.edit', $item->id) }}"
                            class="btn btn-sm btn-warning">Edit</a>
@@ -78,25 +84,27 @@ function searchTable() {
     let table = document.getElementById("accountTable");
     let rows = table.getElementsByTagName("tr");
 
-     for (let i = 1; i < rows.length; i++) {
+    for (let i = 1; i < rows.length; i++) {
         let nama = rows[i].getElementsByTagName("td")[0];
         let nisn = rows[i].getElementsByTagName("td")[1];
         let alamat = rows[i].getElementsByTagName("td")[2];
         let tglLahir = rows[i].getElementsByTagName("td")[3];
         let wali = rows[i].getElementsByTagName("td")[4];
         let telepon = rows[i].getElementsByTagName("td")[5];
+        let tglMasuk = rows[i].getElementsByTagName("td")[6];
 
-        if (nama && nisn && alamat && tglLahir && wali && telepon) {
+        if (nama && nisn && alamat && tglLahir && wali && telepon && tglMasuk) {
             let textNama = nama.textContent.toLowerCase();
             let textNisn = nisn.textContent.toLowerCase();
             let textAlamat = alamat.textContent.toLowerCase();
             let textTglLahir = tglLahir.textContent.toLowerCase();
             let textWali = wali.textContent.toLowerCase();
             let textTelepon = telepon.textContent.toLowerCase();
+            let textTglMasuk = tglMasuk.textContent.toLowerCase();
 
             if (textNama.includes(input) || textNisn.includes(input) || textAlamat.includes(input) 
                 || textTglLahir.includes(input) || textWali.includes(input) || textTelepon.includes(input)
-                ) {
+                || textTglMasuk.includes((input))) {
                 rows[i].style.display = "";
             } else {
                 rows[i].style.display = "none";

@@ -15,5 +15,6 @@ class Siswa_5 extends Model
         'tanggal_lahir',
         'wali_murid',
         'telepon',
+        'tanggal_masuk'
     ];
 }

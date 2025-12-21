@@ -25,7 +25,7 @@
      
 
         <div class="card-body">
-            <form method="POST" action="{{ route('akun.store') }}">
+            <form id="formTambahAkun">
                 @csrf
 
                 <!-- Nama -->
@@ -74,13 +74,81 @@
                     <a href="{{ route('account') }}" class="btn btn-secondary">
                         Kembali
                     </a>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary" onclick="confirmSave()">
                         Simpan Data
                     </button>
+
                 </div>
             </form>
+            <script>
+                function confirmSave() {
+                    Swal.fire({
+                        title: 'Simpan Data?',
+                        text: 'Apakah Anda yakin ingin menyimpan data ini?',
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya, Simpan',
+                        cancelButtonText: 'Batal',
+                        confirmButtonColor: '#2563eb',
+                        cancelButtonColor: '#6c757d'
+                    }).then((result) => {
+                        if (!result.isConfirmed) return;
+
+                        fetch("{{ route('akun.store') }}", {
+                            method: "POST",
+                            headers: {
+                                "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                                "Accept": "application/json",
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                name: document.querySelector('[name="name"]').value,
+                                email: document.querySelector('[name="email"]').value,
+                                password: document.querySelector('[name="password"]').value
+                            })
+                        })
+                        .then(response => {
+                            if (!response.ok) throw response;
+                            return response.json();
+                        })
+                        .then(data => {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: 'Data akun berhasil disimpan',
+                                confirmButtonText: 'OK',
+                                confirmButtonColor: '#2563eb'
+                            }).then(() => {
+                                window.location.href = "{{ route('account') }}";
+                            });
+                        })
+                        .catch(async error => {
+                            let res = await error.json();
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Gagal',
+                                text: res.message ?? 'Terjadi kesalahan'
+                            });
+                        });
+                    });
+                }
+                </script>
+
+
+
         </div>
     </div>
 
 </div>
 @endsection
+@if(session('success'))
+<script>
+Swal.fire({
+    icon: 'success',
+    title: 'Berhasil',
+    text: '{{ session('success') }}',
+    confirmButtonColor: '#2563eb'
+});
+</script>
+@endif
+
