@@ -23,7 +23,7 @@ class SarpasController extends Controller
     {
         $request->validate([
             'ruangan' => 'required',
-            'foto' => 'required|image|mimes:jpg,jpeg,png|max:2048'
+            'foto' => 'required|image|mimes:jpg,jpeg,png|max:10048'
         ]);
 
         $foto = $request->file('foto')->store('sarpas', 'public');
@@ -49,7 +49,7 @@ class SarpasController extends Controller
 
         $request->validate([
             'ruangan' => 'required',
-            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:10048'
         ]);
 
         $data = $request->only('ruangan');

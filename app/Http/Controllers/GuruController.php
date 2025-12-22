@@ -27,7 +27,7 @@ class GuruController extends Controller
             'jabatan' => 'required',
             'alamat' => 'required',
             'telepon' => 'required',
-            'profile' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'profile' => 'required|image|mimes:jpg,jpeg,png|max:10048',
         ]);
 
         $path = $request->file('profile')->store('guru', 'public');
@@ -59,7 +59,7 @@ class GuruController extends Controller
             'jabatan' => 'required',
             'alamat' => 'required',
             'telepon' => 'required',
-            'profile' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'profile' => 'nullable|image|mimes:jpg,jpeg,png|max:10048',
         ]);
 
         $data = $request->only('nama', 'jabatan', 'alamat', 'telepon');

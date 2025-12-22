@@ -1,101 +1,72 @@
 @props(['berita'])
+
 <section class="py-16 px-4 font-body">
     <div class="max-w-5xl mx-auto">
 
-        <!-- JUDUL -->
         <h1 class="text-5xl font-heading font-bold text-center text-gray-800 pt-20 mb-12 tracking-tight">
-            Berita
+            BERITA
         </h1>
 
-        <!-- GRID -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
             @foreach ($berita as $item)
-                <!-- CARD -->
-                <div onclick="openModal({{ $item->id }})" class="cursor-pointer bg-white rounded-xl shadow-md
-                               hover:shadow-xl transition overflow-hidden">
+                <div x-data="{ open: false }"
+                    class="bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden cursor-pointer">
 
-                    <div class="aspect-[16/9] bg-gray-200">
-                        <img src="{{ asset('storage/' . $item->foto) }}" alt="{{ $item->judul }}"
-                            class="w-full h-full object-cover">
-                    </div>
-
-                    <div class="p-5 text-center">
-                        <h3 class="text-lg font-news  font-semibold text-gray-800 mb-2 leading-snug">
-                            {{ $item->judul }}
-                        </h3>
-                        <p class="text-sm text-gray-600 leading-relaxed font-times">
-                            {{ Str::limit($item->deskripsi, 70) }}
-                        </p>
-                    </div>
-                </div>
-
-                <!-- MODAL -->
-                <div id="modal-{{ $item->id }}" class="fixed inset-0 z-50 hidden items-center justify-center
-                                bg-black/70 backdrop-blur-sm px-4 font-body">
-
-                    <!-- Overlay -->
-                    <div class="absolute inset-0" onclick="closeModal({{ $item->id }})"></div>
-
-                    <!-- Content -->
-                    <div class="relative bg-white w-full max-w-xl rounded-2xl shadow-2xl
-                                   transform scale-95 opacity-0 transition-all duration-300
-                                   modal-content">
-
-                        <!-- Image -->
-                        <div class="overflow-hidden rounded-t-2xl">
+                    <!-- CARD -->
+                    <div @click="open = true">
+                        <div class="aspect-[16/9] bg-gray-200">
                             <img src="{{ asset('storage/' . $item->foto) }}" alt="{{ $item->judul }}"
-                                class="w-full h-56 object-cover">
+                                class="w-full h-full object-cover">
                         </div>
 
-                        <!-- Body -->
-                        <div class="p-6 text-center">
-                            <h2 class="text-2xl font-news font-semibold text-gray-800 mb-3 leading-snug">
+                        <div class="p-5 text-center">
+                            <h3 class="text-lg font-news font-semibold text-gray-800 mb-2 leading-snug">
                                 {{ $item->judul }}
-                            </h2>
+                            </h3>
 
-                            <p class="text-gray-600 leading-loose font-times text-base">
-                            <div class="text-gray-600 leading-loose font-times text-left">
-                                {!! $item->deskripsi !!}
+                            <p class="text-sm text-gray-600 leading-relaxed font-times">
+                                    {{ Str::limit(strip_tags($item->deskripsi), 70) }}
+                                </p>
+                        </div>
+                    </div>
+
+                    <!-- MODAL -->
+
+                    <div x-show="open" x-transition x-cloak @click.self="open = false"
+                        class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
+
+                        <!-- Modal Box -->
+                        <div class="bg-white rounded-2xl max-w-xl w-full shadow-2xl
+                            max-h-[90vh] flex flex-col overflow-hidden">
+
+                            <!-- Image (tidak ikut scroll) -->
+                            <div class="aspect-[16/9] bg-gray-200 shrink-0">
+                                <img src="{{ asset('storage/' . $item->foto) }}" class="w-full h-full object-cover">
                             </div>
-                            </p>
+
+                            <!-- Scrollable Content -->
+                            <div class="p-6 overflow-y-auto">
+                                <h2 class="text-2xl font-news font-semibold text-gray-800 mb-4 text-center">
+                                    {{ $item->judul }}
+                                </h2>
+
+                                <div class="text-gray-600 leading-loose font-times text-left">
+                                    {!! $item->deskripsi !!}
+                                </div>
+
+                                <div class="text-center">
+                                    <button @click="open = false"
+                                        class="mt-6 px-5 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900">
+                                        Tutup
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             @endforeach
-        </div>
 
+        </div>
     </div>
 </section>
-
-<script>
-    function openModal(id) {
-        const modal = document.getElementById('modal-' + id);
-        const content = modal.querySelector('.modal-content');
-
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-
-        setTimeout(() => {
-            content.classList.remove('scale-95', 'opacity-0');
-            content.classList.add('scale-100', 'opacity-100');
-        }, 50);
-
-        document.addEventListener('keydown', escHandler);
-        function escHandler(e) {
-            if (e.key === 'Escape') closeModal(id);
-        }
-    }
-
-    function closeModal(id) {
-        const modal = document.getElementById('modal-' + id);
-        const content = modal.querySelector('.modal-content');
-
-        content.classList.remove('scale-100', 'opacity-100');
-        content.classList.add('scale-95', 'opacity-0');
-
-        setTimeout(() => {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }, 300);
-    }
-</script>

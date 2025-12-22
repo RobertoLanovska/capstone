@@ -1,10 +1,8 @@
 @props(['prestasi'])
-
 <section class="py-16 px-4 font-body">
     <div class="max-w-7xl mx-auto">
-
         <h1 class="text-5xl font-heading font-bold text-center text-gray-800 pt-20 mb-12 tracking-tight">
-            Prestasi
+            PRESTASI
         </h1>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">

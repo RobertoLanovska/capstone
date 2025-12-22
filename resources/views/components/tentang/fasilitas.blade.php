@@ -1,8 +1,8 @@
 @props(['sarpas'])
 <section class="py-16 px-4 font-body">
-    <div class="max-w-5xl mx-auto">
+    <div class="max-w-7xl mx-auto">
         <h1 class="text-5xl font-heading font-bold text-center text-gray-800 pt-20 mb-12 tracking-tight">
-            Fasilitas
+            FASILITAS
         </h1>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">

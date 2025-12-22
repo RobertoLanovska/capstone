@@ -1,0 +1,96 @@
+/* =========================
+   SIDEBAR HEADER
+========================= */
+#sidebar .sidebar-header {
+    padding: 20px 16px 24px;
+}
+
+/* LOGO */
+#sidebar .logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#sidebar .logo-img {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+}
+
+/* TEXT LOGO */
+#sidebar .logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    position: relative;
+    top: 3px; /* ⬅️ optical alignment */
+    transition: color 0.3s ease;
+}
+
+/* =========================
+   WARNA TEXT (AUTO TERBALIK)
+========================= */
+/* Mode terang */
+body:not(.dark) #sidebar .logo-text {
+    color: #0f172a;
+}
+
+/* Mode gelap */
+body.dark #sidebar .logo-text {
+    color: #f8fafc;
+}
+
+/* =========================
+   THEME TOGGLE – FINAL FIX
+========================= */
+#sidebar .theme-toggle {
+    display: flex;
+    align-items: center;
+    margin-left: 56px;
+    margin-top: 16px;
+}
+
+/* 🔥 BOX IKON (SUN & MOON) */
+#sidebar .theme-toggle .icon-sun,
+#sidebar .theme-toggle .icon-moon {
+    width: 32px;                 /* ⬅️ KUNCI UTAMA */
+    text-align: center;          /* ⬅️ ikon di tengah box */
+    font-size: 22px;
+    line-height: 1;
+}
+
+/* WARNA */
+#sidebar .icon-sun {
+    color: #fbbf24;
+}
+
+#sidebar .icon-moon {
+    color: #94a3b8;
+}
+
+/* 🔥 TOGGLE SWITCH */
+#sidebar .theme-toggle .form-switch {
+    width: 56px;                 /* ⬅️ box toggle */
+    display: flex;
+    justify-content: center;
+    transform: scale(1.15);
+}
+
+#sidebar .form-switch .form-check-input {
+    width: 46px;
+    height: 24px;
+    cursor: pointer;
+}
+
+/* =========================
+   ICON ACTIVE STATE
+========================= */
+body.dark #sidebar .icon-sun {
+    opacity: 0.3;
+}
+
+body.dark #sidebar .icon-moon {
+    color: #c084fc;
+}

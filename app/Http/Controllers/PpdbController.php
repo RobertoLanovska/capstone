@@ -24,7 +24,7 @@ class PpdbController extends Controller
         $request->validate([
             'judul' => 'required',
             'deskripsi' => 'required',
-            'foto' => 'required|image|mimes:jpg,jpeg,png|max:2048'
+            'foto' => 'required|image|mimes:jpg,jpeg,png|max:10048'
         ]);
 
         $foto = $request->file('foto')->store('ppdb', 'public');
@@ -52,7 +52,7 @@ class PpdbController extends Controller
         $request->validate([
             'judul' => 'required',
             'deskripsi' => 'required',
-            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:5048'
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:10048'
         ]);
 
         $data = $request->only('judul', 'deskripsi');

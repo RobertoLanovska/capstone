@@ -16,7 +16,11 @@
     <!-- Header -->
     <div class="text-center mb-6">
       <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-sky-100 text-sky-600 text-2xl">
-        🔐
+        <img 
+          src="{{ asset('image/logo.png') }}" 
+          alt="Logo"
+          class="h-10 w-10 object-contain"
+        />
       </div>
       <h1 class="text-2xl font-bold text-gray-800">Selamat Datang</h1>
       <p class="text-sm text-gray-500">Silakan login untuk melanjutkan</p>

@@ -1,10 +1,9 @@
 @props(['ekstrakulikuler'])
-
-<section class="py-16 px-4 mt-24">
+<section class="py-16 px-4 font-body">
     <div class="max-w-7xl mx-auto">
 
-        <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">
-            Ekstrakurikuler
+        <h1 class="text-5xl font-heading font-bold text-center text-gray-800 pt-20 mb-12 tracking-tight">
+            EKSTRAKURIKULER
         </h1>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">

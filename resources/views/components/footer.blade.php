@@ -10,7 +10,6 @@
 
 <body class="min-h-screen flex flex-col">
 
-    <!-- (konten halaman lain di atas...) -->
     <main class="flex-grow"></main>
 
     <!-- Footer Section -->

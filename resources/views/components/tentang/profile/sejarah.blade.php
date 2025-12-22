@@ -1,5 +1,5 @@
 <section class="relative w-full h-[100vh] sm:h-[85vh] md:h-[100vh] overflow-visible pb-32">
-    <!-- Background Image -->
+
     <img src="https://i.pinimg.com/originals/f5/8f/0b/f58f0b27e08e8d08b19b429f97de8edc.jpg" alt="MI Nahdlatul Ummah"
         class="absolute inset-0 w-full h-full object-cover brightness-90">
 

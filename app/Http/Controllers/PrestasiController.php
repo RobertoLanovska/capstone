@@ -24,7 +24,14 @@ class PrestasiController extends Controller
         $request->validate([
             'judul' => 'required',
             'deskripsi' => 'required',
-            'foto' => 'required|image|mimes:jpg,jpeg,png|max:2048'
+            'foto' => 'required|image|mimes:jpg,jpeg,png|max:10120',
+        ], [
+            'judul.required' => 'Judul wajib diisi',
+            'deskripsi.required' => 'Deskripsi wajib diisi',
+            'foto.required' => 'Foto wajib diunggah',
+            'foto.image' => 'File harus berupa gambar',
+            'foto.mimes' => 'Format gambar harus JPG atau PNG',
+            'foto.max' => 'Gambar terlalu besar (maksimal 10 MB)',
         ]);
 
         $foto = $request->file('foto')->store('prestasi', 'public');
@@ -32,12 +39,13 @@ class PrestasiController extends Controller
         Prestasi::create([
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'foto' => $foto
+            'foto' => $foto,
         ]);
 
         return redirect()->route('prestasi')
             ->with('success', 'Prestasi berhasil ditambahkan');
     }
+
 
     public function edit($id)
     {
@@ -52,7 +60,11 @@ class PrestasiController extends Controller
         $request->validate([
             'judul' => 'required',
             'deskripsi' => 'required',
-            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:10120',
+        ], [
+            'foto.image' => 'File harus berupa gambar',
+            'foto.mimes' => 'Format gambar harus JPG atau PNG',
+            'foto.max' => 'Gambar terlalu besar (maksimal 10 MB)',
         ]);
 
         $data = $request->only('judul', 'deskripsi');
@@ -67,6 +79,7 @@ class PrestasiController extends Controller
         return redirect()->route('prestasi')
             ->with('success', 'Prestasi berhasil diperbarui');
     }
+
 
     public function destroy($id)
     {
