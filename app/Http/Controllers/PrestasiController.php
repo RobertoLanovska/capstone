@@ -42,8 +42,10 @@ class PrestasiController extends Controller
             'foto' => $foto,
         ]);
 
-        return redirect()->route('prestasi')
-            ->with('success', 'Prestasi berhasil ditambahkan');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
 
@@ -76,8 +78,10 @@ class PrestasiController extends Controller
 
         $prestasi->update($data);
 
-        return redirect()->route('prestasi')
-            ->with('success', 'Prestasi berhasil diperbarui');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
 
@@ -88,8 +92,10 @@ class PrestasiController extends Controller
         Storage::disk('public')->delete($prestasi->foto);
         $prestasi->delete();
 
-        return redirect()->route('prestasi')
-            ->with('success', 'Prestasi berhasil dihapus');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     public function front()

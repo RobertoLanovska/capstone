@@ -40,8 +40,10 @@ class GuruController extends Controller
             'profile' => $path,
         ]);
 
-        return redirect()->route('guru')
-            ->with('success', 'Data guru berhasil ditambahkan');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     public function edit($id)
@@ -70,9 +72,11 @@ class GuruController extends Controller
         }
 
         $guru->update($data);
-
-        return redirect()->route('guru')
-            ->with('success', 'Data guru berhasil diperbarui');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
+        
     }
 
     public function destroy($id)
@@ -82,7 +86,9 @@ class GuruController extends Controller
         Storage::disk('public')->delete($guru->profile);
         $guru->delete();
 
-        return redirect()->route('guru')
-            ->with('success', 'Data guru berhasil dihapus');
+        return response()->json([
+            'status' => true,
+            'message' => 'Guru berhasil dihapus'
+        ]);
     }
 }

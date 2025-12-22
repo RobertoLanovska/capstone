@@ -13,11 +13,28 @@
 @endif
 
 <div class="page-heading">
-    <h3>Edit PPDB</h3>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Edit Ppdb</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">
+                    <a href="/admin">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="/ppdb">Ppdb</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Edit
+                </li>
+            </ol>
+        </nav>
+    </div>
 
     <div class="card col-md-6">
         <div class="card-body">
-            <form method="POST"
+            <form id="formEditPpdb"
+                method="POST"
                   action="{{ route('ppdb.update', $ppdb->id) }}"
                   enctype="multipart/form-data">
                 @csrf
@@ -39,10 +56,60 @@
                        class="form-control mb-3"
                        name="foto">
 
-                <button class="btn btn-primary">Update</button>
+                <button type="button" class="btn btn-primary" onclick="confirmSave()">
                 <a href="{{ route('ppdb') }}"
                    class="btn btn-secondary">Kembali</a>
             </form>
+            <script>
+                function confirmSave() {
+                    Swal.fire({
+                        title: 'Simpan Data?',
+                        text: 'Apakah Anda yakin ingin memperbarui data ini?',
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya, Simpan',
+                        cancelButtonText: 'Batal',
+                        confirmButtonColor: '#2563eb',
+                        cancelButtonColor: '#6c757d'
+                    }).then((result) => {
+                        if (!result.isConfirmed) return;
+
+                        let form = document.getElementById('formEditPpdb');
+                        let formData = new FormData(form);
+
+                        fetch(form.action, {
+                            method: "POST",
+                            headers: {
+                                "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                                "Accept": "application/json"
+                            },
+                            body: formData
+                        })
+                        .then(res => {
+                            if (!res.ok) throw res;
+                            return res.json();
+                        })
+                        .then(() => {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: 'Data ppdb berhasil diperbarui',
+                                confirmButtonColor: '#2563eb'
+                            }).then(() => {
+                                window.location.href = "{{ route('ppdb') }}";
+                            });
+                        })
+                        .catch(async err => {
+                            let res = await err.json();
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Gagal',
+                                text: res.message ?? 'Terjadi kesalahan'
+                            });
+                        });
+                    });
+                }
+            </script>
         </div>
     </div>
 </div>

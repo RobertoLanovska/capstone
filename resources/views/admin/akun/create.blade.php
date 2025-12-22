@@ -21,30 +21,125 @@
         </nav>
     </div>
 
-    <div class="card">
-        <div class="card-body col-md-6">
-            <form method="POST" action="{{ route('akun.store') }}">
+    <div class="card col-md-12 shadow-sm">
+     
+
+        <div class="card-body">
+            <form id="formTambahAkun">
                 @csrf
 
+                <!-- Nama -->
                 <div class="mb-3">
-                    <label>Nama</label>
-                    <input type="text" name="name" class="form-control" required>
+                    <label class="form-label">Nama</label>
+                    <input type="text"
+                        name="name"
+                        class="form-control @error('name') is-invalid @enderror"
+                        placeholder="Masukkan nama lengkap"
+                        value="{{ old('name') }}"
+                        required>
+                    @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
+                <!-- Email -->
                 <div class="mb-3">
-                    <label>Email</label>
-                    <input type="email" name="email" class="form-control" required>
+                    <label class="form-label">Email</label>
+                    <input type="email"
+                        name="email"
+                        class="form-control @error('email') is-invalid @enderror"
+                        placeholder="contoh@email.com"
+                        value="{{ old('email') }}"
+                        required>
+                    @error('email')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
-                <div class="mb-3">
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-control" required>
+                <!-- Password -->
+                <div class="mb-4">
+                    <label class="form-label">Password</label>
+                    <input type="password"
+                        name="password"
+                        class="form-control @error('password') is-invalid @enderror"
+                        placeholder="Minimal 8 karakter"
+                        required>
+                    @error('password')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
-                <button class="btn btn-primary">Simpan</button>
-                <a href="{{ route('account') }}" class="btn btn-secondary">Kembali</a>
+                <!-- Button -->
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{{ route('account') }}" class="btn btn-secondary">
+                        Kembali
+                    </a>
+                    <button type="button" class="btn btn-primary" onclick="confirmSave()">
+                        Simpan Data
+                    </button>
+
+                </div>
             </form>
+            <script>
+                function confirmSave() {
+                    Swal.fire({
+                        title: 'Simpan Data?',
+                        text: 'Apakah Anda yakin ingin menyimpan data ini?',
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya, Simpan',
+                        cancelButtonText: 'Batal',
+                        confirmButtonColor: '#2563eb',
+                        cancelButtonColor: '#6c757d'
+                    }).then((result) => {
+                        if (!result.isConfirmed) return;
+
+                        fetch("{{ route('akun.store') }}", {
+                            method: "POST",
+                            headers: {
+                                "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                                "Accept": "application/json",
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                name: document.querySelector('[name="name"]').value,
+                                email: document.querySelector('[name="email"]').value,
+                                password: document.querySelector('[name="password"]').value
+                            })
+                        })
+                        .then(response => {
+                            if (!response.ok) throw response;
+                            return response.json();
+                        })
+                        .then(data => {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: 'Data akun berhasil disimpan',
+                                confirmButtonText: 'OK',
+                                confirmButtonColor: '#2563eb'
+                            }).then(() => {
+                                window.location.href = "{{ route('account') }}";
+                            });
+                        })
+                        .catch(async error => {
+                            let res = await error.json();
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Gagal',
+                                text: res.message ?? 'Terjadi kesalahan'
+                            });
+                        });
+                    });
+                }
+            </script>
+
+
+
         </div>
     </div>
+
 </div>
 @endsection
+
+

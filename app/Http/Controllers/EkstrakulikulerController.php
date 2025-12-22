@@ -37,8 +37,10 @@ class EkstrakulikulerController extends Controller
             'foto' => $path,
         ]);
 
-        return redirect()->route('ekstrakulikuler')
-            ->with('success', 'Data ekstrakulikuler berhasil ditambahkan');
+        return response()->json([
+            'status'  => true,
+            'message' => 'Data berhasil disimpan'
+        ]);
     }
 
     public function edit($id)
@@ -66,8 +68,10 @@ class EkstrakulikulerController extends Controller
 
         $ekstrakulikuler->update($data);
 
-        return redirect()->route('ekstrakulikuler')
-            ->with('success', 'Data ekstrakulikuler berhasil diperbarui');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+        ]);
     }
 
     public function destroy($id)
@@ -77,8 +81,10 @@ class EkstrakulikulerController extends Controller
         Storage::disk('public')->delete($ekstrakulikuler->foto);
         $ekstrakulikuler->delete();
 
-        return redirect()->route('ekstrakulikuler')
-            ->with('success', 'Data ekstrakulikuler berhasil dihapus');
+        return response()->json([
+            'status' => true,
+            'message' => 'Ekstrakulikuler berhasil dihapus'
+        ]);
     }
 
     public function frontend()

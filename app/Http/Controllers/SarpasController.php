@@ -33,8 +33,10 @@ class SarpasController extends Controller
             'foto' => $foto
         ]);
 
-        return redirect()->route('sarpas')
-            ->with('success', 'Data sarana prasarana berhasil ditambahkan');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     public function edit($id)
@@ -61,8 +63,10 @@ class SarpasController extends Controller
 
         $sarpas->update($data);
 
-        return redirect()->route('sarpas')
-            ->with('success', 'Data sarana prasarana berhasil diperbarui');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     public function destroy($id)
@@ -72,8 +76,10 @@ class SarpasController extends Controller
         Storage::disk('public')->delete($sarpas->foto);
         $sarpas->delete();
 
-        return redirect()->route('sarpas')
-            ->with('success', 'Data sarana prasarana berhasil dihapus');
+        return response()->json([
+        'status'  => true,
+        'message' => 'Data berhasil disimpan'
+    ]);
     }
 
     public function frontend()

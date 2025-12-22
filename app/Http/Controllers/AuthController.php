@@ -98,19 +98,23 @@ class AuthController extends Controller
      public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+            'name'     => 'required',
+            'email'    => 'required|email|unique:users,email',
+            'password' => 'required|min:8',
         ]);
 
         User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'password' => bcrypt($request->password),
         ]);
 
-        return redirect()->route('account')->with('success', 'Akun berhasil ditambahkan');
+        return response()->json([
+            'status'  => true,
+            'message' => 'Data berhasil disimpan'
+        ]);
     }
+
     public function edit($id)
     {
         $account = User::findOrFail($id);
@@ -118,35 +122,40 @@ class AuthController extends Controller
     }
     public function update(Request $request, $id)
     {
-        $account = User::findOrFail($id);
+        $user = User::findOrFail($id);
 
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $id,
+            'name'  => 'required',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'password' => 'nullable|min:8'
         ]);
 
-        $data = $request->only('name', 'email');
+        $data = [
+            'name'  => $request->name,
+            'email' => $request->email,
+        ];
 
-        if ($request->password) {
-            $data['password'] = Hash::make($request->password);
+        if ($request->filled('password')) {
+            $data['password'] = bcrypt($request->password);
         }
 
-        $account->update($data);
+        $user->update($data);
 
-        return redirect()->route('account')->with('success', 'Akun berhasil diperbarui');
+        return response()->json([
+            'status' => true,
+            'message' => 'Data berhasil diperbarui'
+        ]);
     }
 
-    public function destroy(string $id)
+
+    public function destroy($id)
     {
-        
-        $account = User::findOrFail($id);
+        User::findOrFail($id)->delete();
 
-
-    
-
-        // Hapus produk
-        $account->delete();
-
-        return redirect()->route('account')->with('succes', 'akun berhasil dihapus');
+        return response()->json([
+            'status' => true,
+            'message' => 'Akun berhasil dihapus'
+        ]);
     }
+
 }
