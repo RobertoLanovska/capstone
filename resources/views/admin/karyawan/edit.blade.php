@@ -1,10 +1,10 @@
 @extends('layout.master-admin')
-@section('title','Edit Ppdb')
+@section('title','Edit Karyawan')
 
 @section('content')
 <div class="page-heading">
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h3 class="mb-0">Edit PPDB</h3>
+        <h3 class="mb-0">Edit Karyawan</h3>
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
@@ -12,7 +12,7 @@
                     <a href="/admin">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="/ppdb">Ppdb</a>
+                    <a href="/karyawan">Karyawan</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                     Edit
@@ -22,67 +22,93 @@
     </div>
 
     <div class="card col-md-12 shadow-sm">
-        
+  
 
         <div class="card-body">
-            <form id="formEditPpdb"
+            <form id="formEditKaryawan"
                 method="POST"
-                action="{{ route('ppdb.update', $ppdb->id) }}"
+                action="{{ route('karyawan.update', $karyawan->id) }}"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
-                <!-- Judul -->
+                <!-- Nama -->
                 <div class="mb-3">
-                    <label class="form-label">Judul Ppdb</label>
+                    <label class="form-label">Nama</label>
                     <input type="text"
-                        name="judul"
-                        class="form-control @error('judul') is-invalid @enderror"
-                        value="{{ old('judul', $ppdb->judul) }}"
+                        name="nama"
+                        class="form-control @error('nama') is-invalid @enderror"
+                        value="{{ old('nama', $karyawan->nama) }}"
                         required>
-                    @error('judul')
+                    @error('nama')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
-                <!-- Deskripsi -->
+                <!-- Jabatan -->
                 <div class="mb-3">
-                    <label class="form-label">Deskripsi</label>
-                    <textarea name="deskripsi"
-                            class="form-control @error('deskripsi') is-invalid @enderror"
-                            rows="3"
-                            required>{{ old('deskripsi', $ppdb->deskripsi) }}</textarea>
-                    @error('deskripsi')
+                    <label class="form-label">Jabatan</label>
+                    <input type="text"
+                        name="jabatan"
+                        class="form-control @error('jabatan') is-invalid @enderror"
+                        value="{{ old('jabatan', $karyawan->jabatan) }}"
+                        required>
+                    @error('jabatan')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
-                <!-- Foto -->
+                <!-- Alamat -->
+                <div class="mb-3">
+                    <label class="form-label">Alamat</label>
+                    <textarea name="alamat"
+                            class="form-control @error('alamat') is-invalid @enderror"
+                            rows="3"
+                            required>{{ old('alamat', $karyawan->alamat) }}</textarea>
+                    @error('alamat')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Telepon -->
+                <div class="mb-3">
+                    <label class="form-label">Telepon</label>
+                    <input type="text"
+                        name="telepon"
+                        class="form-control @error('telepon') is-invalid @enderror"
+                        value="{{ old('telepon', $karyawan->telepon) }}"
+                        required>
+                    @error('telepon')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Foto Profil -->
                 <div class="mb-4">
-                    <label class="form-label">Foto Ppdb</label>
+                    <label class="form-label">Foto Profil</label>
 
                     <div class="mb-2">
-                        <img src="{{ asset('storage/' . $ppdb->foto) }}"
-                            alt="Foto Ppdb"
+                        <img src="{{ asset('storage/' . $karyawan->profile) }}"
+                            alt="Foto Profil"
                             width="100"
                             class="rounded border">
                     </div>
 
                     <input type="file"
-                        name="foto"
-                        class="form-control @error('foto') is-invalid @enderror">
+                        name="profile"
+                        class="form-control @error('profile') is-invalid @enderror">
                     <small class="text-muted">
                         Kosongkan jika tidak ingin mengganti foto
                     </small>
 
-                    @error('foto')
+                    @error('profile')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
                 <!-- Button -->
                 <div class="d-flex justify-content-end gap-2">
-                    <a href="{{ route('ppdb') }}" class="btn btn-secondary">
+                    <a href="{{ route('karyawan') }}" class="btn btn-secondary">
                         Kembali
                     </a>
                     <button type="button" class="btn btn-primary" onclick="confirmSave()">
@@ -104,7 +130,7 @@
                     }).then((result) => {
                         if (!result.isConfirmed) return;
 
-                        let form = document.getElementById('formEditPpdb');
+                        let form = document.getElementById('formEditKaryawan');
                         let formData = new FormData(form);
 
                         fetch(form.action, {
@@ -123,10 +149,10 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Berhasil',
-                                text: 'Data ppdb berhasil diperbarui',
+                                text: 'Data karyawan berhasil diperbarui',
                                 confirmButtonColor: '#2563eb'
                             }).then(() => {
-                                window.location.href = "{{ route('ppdb') }}";
+                                window.location.href = "{{ route('karyawan') }}";
                             });
                         })
                         .catch(async err => {

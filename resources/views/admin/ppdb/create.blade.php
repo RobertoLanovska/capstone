@@ -2,19 +2,9 @@
 @section('title','Tambah Ppdb')
 
 @section('content')
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul class="mb-0">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
 <div class="page-heading">
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h3 class="mb-0">Tambah Ppdb</h3>
+        <h3 class="mb-0">Tambah Data Ppdb</h3>
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
@@ -31,33 +21,65 @@
         </nav>
     </div>
 
-    <div class="card col-md-6">
+   <div class="card col-md-12 shadow-sm">
+        
+
         <div class="card-body">
             <form id="formTambahPpdb"
                 method="POST"
-                  action="{{ route('ppdb.store') }}"
-                  enctype="multipart/form-data">
+                action="{{ route('ppdb.store') }}"
+                enctype="multipart/form-data">
                 @csrf
 
-                <input type="text"
-                       class="form-control mb-2"
-                       name="judul"
-                       placeholder="Judul">
+                <!-- Judul -->
+                <div class="mb-3">
+                    <label class="form-label">Judul </label>
+                    <input type="text"
+                        name="judul"
+                        class="form-control @error('judul') is-invalid @enderror"
+                        value="{{ old('judul') }}"
+                        required>
+                    @error('judul')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
-                <textarea class="form-control mb-2"
-                          name="deskripsi"
-                          placeholder="Deskripsi"></textarea>
+                <!-- Deskripsi -->
+                <div class="mb-3">
+                    <label class="form-label">Deskripsi</label>
+                    <textarea name="deskripsi"
+                            class="form-control @error('deskripsi') is-invalid @enderror"
+                            rows="3"
+                            required>{{ old('deskripsi') }}</textarea>
+                    @error('deskripsi')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
-                <label>Foto</label>
-                <input type="file"
-                       class="form-control mb-3"
-                       name="foto">
+                <!-- Foto -->
+                <div class="mb-4">
+                    <label class="form-label">Foto Ppdb</label>
+                    <input type="file"
+                        name="foto"
+                        class="form-control @error('foto') is-invalid @enderror">
+                    <small class="text-muted">
+                    </small>
+                    @error('foto')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
-               <button type="button" class="btn btn-primary" onclick="confirmSave()">
-                <a href="{{ route('ppdb') }}"
-                   class="btn btn-secondary">Kembali</a>
+                <!-- Button -->
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{{ route('ppdb') }}" class="btn btn-secondary">
+                        Kembali
+                    </a>
+                     <button type="button" class="btn btn-primary" onclick="confirmSave()">
+                        Simpan Data
+                    </button>
+                </div>
             </form>
-             <script>
+            <script>
                 function confirmSave() {
                     Swal.fire({
                         title: 'Simpan Data?',
@@ -90,7 +112,7 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Berhasil',
-                                text: 'Data ppdb berhasil disimpan',
+                                text: 'Data Ppdb berhasil disimpan',
                                 confirmButtonColor: '#2563eb'
                             }).then(() => {
                                 window.location.href = "{{ route('ppdb') }}";
@@ -109,5 +131,6 @@
             </script>
         </div>
     </div>
+
 </div>
 @endsection

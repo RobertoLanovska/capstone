@@ -1,51 +1,76 @@
 @extends('layout.master-admin')
-@section('title','PPDB')
+@section('title','Karyawan')
 
 @section('content')
 <div class="page-heading">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h3 class="mb-0">Data PPDB</h3>
-        <br>
-        <br>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Data Karyawan</h3>
+
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item">
                     <a href="admin">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    Ppdb
+                    Karyawan
                 </li>
             </ol>
         </nav>
     </div>
 
-    <!-- <a href="{{ route('ppdb.create') }}" class="btn btn-primary mb-3">
-        + Tambah PPDB
-    </a> -->
+    <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-3">
+         Tambah Karyawan
+    </a>
 
     <div class="card">
         <div class="card-body">
+            <div class="row mb-3 ">
+                <div class="col-md-4">
+                    <input type="text"
+                    id="searchInput"
+                    class="form-control"
+                    placeholder="Cari"
+                    onkeyup="searchTable()">
+
+                </div>
+              
+            </div>
             <table class="table table-striped" id="accountTable">
                 <thead>
                 <tr>
                     <th>Foto</th>
-                    <th>Judul</th>
-                    <th>Deskripsi</th>
+                    <th>Nama</th>
+                    <th>Jabatan</th>
+                    <th>Telepon</th>
                     <th width="150">Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($ppdb as $item)
+                @foreach ($karyawan as $item)
                 <tr>
                     <td>
-                        <img src="{{ asset('storage/'.$item->foto) }}"
-                             width="80" class="rounded">
+                        <img src="{{ asset('storage/'.$item->profile) }}"
+                             width="60" class="rounded">
                     </td>
-                    <td>{{ $item->judul }}</td>
-                    <td>{{ Str::limit($item->deskripsi, 50) }}</td>
+                    <td>{{ $item->nama }}</td>
+                    <td>{{ $item->jabatan }}</td>
+                    <td>{{ $item->telepon }}</td>
                     <td>
-                        <a href="{{ route('ppdb.edit', $item->id) }}"
+                        <a href="{{ route('karyawan.edit', $item->id) }}"
                            class="btn btn-sm btn-warning">Edit</a>
+
+                        <button class="btn btn-sm btn-danger"
+                                    onclick="confirmDelete({{ $item->id }})">
+                                Hapus
+                        </button>
+
+                            <form id="delete-form-{{ $item->id }}"
+                                action="{{ route('karyawan.destroy', $item->id) }}"
+                                method="POST"
+                                class="d-none">
+                                @csrf
+                                @method('DELETE')
+                            </form>
                     </td>
                 </tr>
                 @endforeach
@@ -54,6 +79,7 @@
         </div>
     </div>
 </div>
+
 <script>
 function searchTable() {
     let input = document.getElementById("searchInput").value.toLowerCase();
@@ -62,26 +88,33 @@ function searchTable() {
 
     for (let i = 1; i < rows.length; i++) {
         let nama = rows[i].getElementsByTagName("td")[1];
-        let email = rows[i].getElementsByTagName("td")[2];
+        let jabatan = rows[i].getElementsByTagName("td")[2];
+        let telepon = rows[i].getElementsByTagName("td")[3];
 
-        if (nama && email) {
+        if (nama && jabatan && telepon) {
             let textNama = nama.textContent.toLowerCase();
-            let textEmail = email.textContent.toLowerCase();
+            let textJabatan = jabatan.textContent.toLowerCase();
+            let textTelepon = telepon.textContent.toLowerCase();
 
-            if (textNama.includes(input) || textEmail.includes(input)) {
+            if (
+                textNama.includes(input) ||
+                textJabatan.includes(input) ||
+                textTelepon.includes(input)
+            ) {
                 rows[i].style.display = "";
             } else {
                 rows[i].style.display = "none";
             }
         }
     }
+
 }
 </script>
-<!-- <script>
+<script>
     function confirmDelete(id) {
         Swal.fire({
-            title: 'Hapus ppdb?',
-            text: 'Data ppdb yang dihapus tidak dapat dikembalikan!',
+            title: 'Hapus Karyawan?',
+            text: 'Data Karyawan yang dihapus tidak dapat dikembalikan!',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Ya, Hapus',
@@ -108,7 +141,7 @@ function searchTable() {
                     Swal.fire({
                         icon: 'success',
                         title: 'Berhasil',
-                        text: 'ppdb berhasil dihapus',
+                        text: 'Karyawam berhasil dihapus',
                         confirmButtonColor: '#2563eb'
                     }).then(() => {
                         location.reload(); // atau redirect
@@ -118,11 +151,11 @@ function searchTable() {
                     Swal.fire({
                         icon: 'error',
                         title: 'Gagal',
-                        text: 'Gagal menghapus ppdb'
+                        text: 'Gagal menghapus karyawan'
                     });
                 });
             }
         });
     }
-</script> -->
+</script>
 @endsection

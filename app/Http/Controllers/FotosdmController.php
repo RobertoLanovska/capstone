@@ -1,24 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Ppdb;
+use App\Models\Fotosdm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class PpdbController extends Controller
+
+class FotosdmController extends Controller
 {
     public function index()
     {
-        $ppdb = Ppdb::latest()->get();
-        return view('admin.ppdb', compact('ppdb'));
+        $fotosdm = Fotosdm::latest()->get();
+        return view('admin.fotosdm', compact('fotosdm'));
     }
 
     public function create()
     {
-        return view('admin.ppdb.create');
+        return view('admin.fotosdm.create');
     }
-
     public function store(Request $request)
     {
         $request->validate([
@@ -27,29 +26,26 @@ class PpdbController extends Controller
             'foto' => 'required|image|mimes:jpg,jpeg,png|max:10048'
         ]);
 
-        $foto = $request->file('foto')->store('ppdb', 'public');
+        $foto = $request->file('foto')->store('fotosdm', 'public');
 
-        Ppdb::create([
+        Fotosdm::create([
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
             'foto' => $foto
         ]);
 
-        return response()->json([
-        'status'  => true,
-        'message' => 'Data berhasil disimpan'
-    ]);
+        return redirect()->route('fotosdm')
+            ->with('success', 'Data Foto SDM berhasil ditambahkan');
     }
-
     public function edit($id)
     {
-        $ppdb = Ppdb::findOrFail($id);
-        return view('admin.ppdb.edit', compact('ppdb'));
+        $fotosdm = Fotosdm::findOrFail($id);
+        return view('admin.fotosdm.edit', compact('fotosdm'));
     }
 
     public function update(Request $request, $id)
     {
-        $ppdb = Ppdb::findOrFail($id);
+        $fotosdm = Fotosdm::findOrFail($id);
 
         $request->validate([
             'judul' => 'required',
@@ -60,22 +56,13 @@ class PpdbController extends Controller
         $data = $request->only('judul', 'deskripsi');
 
         if ($request->hasFile('foto')) {
-            Storage::disk('public')->delete($ppdb->foto);
-            $data['foto'] = $request->file('foto')->store('ppdb', 'public');
+            Storage::disk('public')->delete($fotosdm->foto);
+            $data['foto'] = $request->file('foto')->store('fotosdm', 'public');
         }
 
-        $ppdb->update($data);
+        $fotosdm->update($data);
 
-        return response()->json([
-        'status'  => true,
-        'message' => 'Data berhasil disimpan'
-    ]);
-    }
-
-    public function frontend()
-    {
-        $ppdb = Ppdb::latest()->get();
-        return view('ppdb', compact('ppdb'));
+        return redirect()->route('fotosdm')
+            ->with('success', 'Data Fotosdm berhasil diperbarui');
     }
 }
-

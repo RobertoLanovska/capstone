@@ -102,12 +102,33 @@
             </li>
 
             <!-- Guru -->
-            <li class="sidebar-item {{ request()->is('guru') ? 'active' : '' }}">
-              <a href="/guru" class="sidebar-link">
-                <i class="fa-solid fa-chalkboard-user"></i>
+            <li
+              class="sidebar-item has-sub {{ request()->is('sdm*') || request()->is('guru') || request()->is('karyawan') ? 'active' : '' }}">
+              <a href="#" class="sidebar-link">
+                <i class="fa-solid fa-users"></i>
                 <span>Guru</span>
               </a>
+
+              <ul
+                class="submenu {{ request()->is('fotosdm') || request()->is('guru') || request()->is('karyawan') ? 'submenu-open' : '' }}">
+
+                
+
+                <li class="submenu-item {{ request()->is('guru') ? 'active' : '' }}">
+                  <a href="/guru" class="submenu-link">
+                    Guru
+                  </a>
+                </li>
+
+                <li class="submenu-item {{ request()->is('karyawan') ? 'active' : '' }}">
+                  <a href="/karyawan" class="submenu-link">
+                    Karyawan
+                  </a>
+                </li>
+
+              </ul>
             </li>
+
 
             <!-- Ekstrakurikuler -->
             <li class="sidebar-item {{ request()->is('ekstrakulikuler') ? 'active' : '' }}">
@@ -153,7 +174,7 @@
             <li class="sidebar-item has-sub {{ request()->is('prestasi-home', 'berita-home') ? 'active' : '' }}">
               <a href="#" class="sidebar-link">
                 <i class="bi bi-grid-fill"></i>
-                <span>Home</span>
+                <span>Manajemen Konten</span>
               </a>
               <ul class="submenu {{ request()->is('prestasi-home', 'berita-home') ? 'submenu-open' : '' }}">
                 <li class="submenu-item {{ request()->is('prestasi-home') ? 'active' : '' }}">
@@ -161,6 +182,11 @@
                 </li>
                 <li class="submenu-item {{ request()->is('berita-home') ? 'active' : '' }}">
                   <a href="/berita-home" class="submenu-link">Berita Home</a>
+                </li>
+                <li class="submenu-item {{ request()->is('fotosdm') ? 'active' : '' }}">
+                  <a href="/fotosdm" class="submenu-link">
+                    Foto SDM
+                  </a>
                 </li>
               </ul>
             </li>
