@@ -41,6 +41,7 @@
                     <th>Foto</th>
                     <th>Nama</th>
                     <th>Jabatan</th>
+                    <th>Alamat</th>
                     <th>Telepon</th>
                     <th width="150">Aksi</th>
                 </tr>
@@ -54,6 +55,7 @@
                     </td>
                     <td>{{ $item->nama }}</td>
                     <td>{{ $item->jabatan }}</td>
+                    <td>{{ $item->alamat }}</td>
                     <td>{{ $item->telepon }}</td>
                     <td>
                         <a href="{{ route('guru.edit', $item->id) }}"
