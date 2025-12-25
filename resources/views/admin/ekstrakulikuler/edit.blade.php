@@ -48,7 +48,7 @@
                 <!-- Jadwal -->
                 <div class="mb-3">
                     <label class="form-label">Jadwal</label>
-                    <input type="date"
+                    <input type="text"
                         name="jadwal"
                         class="form-control @error('jadwal') is-invalid @enderror"
                         value="{{ old('jadwal', $ekstrakulikuler->jadwal) }}"
