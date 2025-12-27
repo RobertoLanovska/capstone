@@ -83,34 +83,20 @@
 
 
     <!-- Grafik Jumlah Siswa -->
+   <!-- Grafik Jumlah Siswa -->
     <div class="row mt-4">
         <div class="col-12">
             <div class="card shadow-sm border-0 rounded-4">
-                
+
                 <!-- Header -->
                 <div class="card-header bg-white border-0 d-flex 
                             justify-content-between align-items-center">
-                    <div>
-                        <h5 class="mb-0 fw-semibold">
-                            📊 Statistik Jumlah Siswa
-                        </h5>
-                        
-                    </div>
+                    <h5 class="mb-0 fw-semibold">
+                        📊 Statistik Jumlah Siswa Per Kelas
+                    </h5>
 
-                    <form method="GET" class="d-flex gap-2">
-                        <!-- Dropdown Kelas -->
-                        <select name="kelas"
-                                class="form-select form-select-sm"
-                                onchange="this.form.submit()">
-                            @for ($i = 1; $i <= 6; $i++)
-                                <option value="siswa_{{ $i }}"
-                                    {{ $kelas == 'siswa_'.$i ? 'selected' : '' }}>
-                                    Siswa {{ $i }}
-                                </option>
-                            @endfor
-                        </select>
-
-                        <!-- Dropdown Tahun -->
+                    <!-- Dropdown Tahun -->
+                    <form method="GET">
                         <select name="tahun"
                                 class="form-select form-select-sm"
                                 onchange="this.form.submit()">
@@ -121,13 +107,13 @@
                             @endfor
                         </select>
                     </form>
-
                 </div>
 
                 <!-- Body -->
                 <div class="card-body">
                     <div id="chartGuruSiswa"></div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -159,7 +145,7 @@
             data: @json($siswaChart)
         }],
 
-        colors: ['#0485e0'], // Indigo modern
+        colors: ['#0485e0'],
 
         plotOptions: {
             bar: {
@@ -173,10 +159,7 @@
         },
 
         xaxis: {
-            categories: [
-                'Jan','Feb','Mar','Apr','Mei','Jun',
-                'Jul','Agu','Sep','Okt','Nov','Des'
-            ],
+            categories: @json($kategoriChart),
             labels: {
                 style: {
                     fontSize: '13px'
@@ -207,7 +190,7 @@
         },
 
         title: {
-             text: 'JUMLAH {{ strtoupper(str_replace("_", " Kelas ", $kelas)) }} TAHUN {{ $tahun }}',
+            text: 'Jumlah Siswa Per Kelas Tahun {{ $tahun }}',
             align: 'left',
             style: {
                 fontSize: '16px',
@@ -223,6 +206,8 @@
 
     chart.render();
 </script>
+
+
 
 
 

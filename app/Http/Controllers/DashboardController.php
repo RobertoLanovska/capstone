@@ -19,56 +19,41 @@ use Carbon\Carbon;
 class DashboardController extends Controller
 {
     public function index(Request $request)
-{
-    $tahun = $request->get('tahun', date('Y'));
-    $kelas = $request->get('kelas', 'siswa_1'); // default siswa_1
+    {
+        $tahun = $request->get('tahun', date('Y'));
 
-    // whitelist tabel (AMAN)
-    $allowedTables = [
-        'siswa_1',
-        'siswa_2',
-        'siswa_3',
-        'siswa_4',
-        'siswa_5',
-        'siswa_6',
-    ];
+        $kelasList = [
+            'siswa_1' => 'Siswa 1',
+            'siswa_2' => 'Siswa 2',
+            'siswa_3' => 'Siswa 3',
+            'siswa_4' => 'Siswa 4',
+            'siswa_5' => 'Siswa 5',
+            'siswa_6' => 'Siswa 6',
+        ];
 
-    if (!in_array($kelas, $allowedTables)) {
-        abort(403);
+        $siswaChart = [];
+        $kategoriChart = [];
+
+        foreach ($kelasList as $table => $label) {
+            $jumlah = DB::table($table)
+                ->whereYear('tanggal_masuk', $tahun)
+                ->count();
+
+            $siswaChart[] = $jumlah;
+            $kategoriChart[] = $label;
+        }
+
+        return view('admin.dashboard', [
+            'tahun'          => $tahun,
+            'siswaChart'     => $siswaChart,
+            'kategoriChart'  => $kategoriChart,
+            'siswaCount'     => array_sum($siswaChart),
+            'guruCount'      => Guru::count(),
+            'ekstraCount'    => Ekstrakulikuler::count(),
+            'prestasiCount'  => Prestasi::count(),
+        ]);
     }
 
-    // Siapkan 12 bulan
-    $siswaPerBulan = array_fill(1, 12, 0);
-
-    $data = DB::table($kelas)
-        ->select(
-            DB::raw('MONTH(tanggal_masuk) as bulan'),
-            DB::raw('COUNT(*) as total')
-        )
-        ->whereYear('tanggal_masuk', $tahun)
-        ->groupBy('bulan')
-        ->pluck('total', 'bulan');
-
-    foreach ($data as $bulan => $total) {
-        $siswaPerBulan[$bulan] = $total;
-    }
-
-    // Rapikan ke array index 0–11
-    $siswaChart = [];
-    for ($i = 1; $i <= 12; $i++) {
-        $siswaChart[] = $siswaPerBulan[$i];
-    }
-
-    return view('admin.dashboard', [
-        'tahun'        => $tahun,
-        'kelas'        => $kelas,
-        'siswaChart'   => $siswaChart,
-        'siswaCount'   => array_sum($siswaChart),
-        'guruCount'    => Guru::count(),
-        'ekstraCount'  => Ekstrakulikuler::count(),
-        'prestasiCount'=> Prestasi::count(),
-    ]);
-}
 
     
     public function home() 
