@@ -141,9 +141,7 @@ Route::middleware(['admin'])->group(function () {
     
 });
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [DashboardController::class, 'home'])->name('home');
 Route::get('/tentang/profile', function () {
     return view('profile'); 
 })->name('tentang.profile');

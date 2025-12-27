@@ -15,15 +15,15 @@
                 w-[90%] md:w-[80%] bg-white rounded-2xl shadow-2xl py-8 px-4 md:px-10">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-                <h3 class="text-3xl font-bold text-green-700" id="guruAktif">--</h3>
+                <h3 class="text-3xl font-bold text-green-700" id="guruAktif">{{ $guruCount }}</h3>
                 <p class="text-gray-600 font-medium">Guru Aktif</p>
             </div>
             <div>
-                <h3 class="text-3xl font-bold text-green-700" id="siswa">--</h3>
+                <h3 class="text-3xl font-bold text-green-700" id="siswa">{{ $jumlahSiswa }}</h3>
                 <p class="text-gray-600 font-medium">Siswa</p>
             </div>
             <div>
-                <h3 class="text-3xl font-bold text-green-700" id="prestasi">--</h3>
+                <h3 class="text-3xl font-bold text-green-700" id="prestasi">{{ $jumlahPrestasi }}</h3>
                 <p class="text-gray-600 font-medium">Prestasi</p>
             </div>
             <div>

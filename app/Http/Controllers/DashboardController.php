@@ -12,6 +12,7 @@ use App\Models\Siswa_5;
 use App\Models\Siswa_6;
 use App\Models\Ekstrakulikuler;
 use App\Models\Prestasi;
+use App\Models\Berita;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
@@ -53,7 +54,7 @@ class DashboardController extends Controller
         for ($i = 1; $i <= 12; $i++) {
             $siswaChart[] = $siswaPerBulan[$i];
         }
-
+        
         return view('admin.dashboard', [
             'tahun'      => $tahun,
             'siswaChart' => $siswaChart,
@@ -62,5 +63,18 @@ class DashboardController extends Controller
             'ekstraCount'   => Ekstrakulikuler::count(),
             'prestasiCount' => Prestasi::count(),
         ]);
+        
     }
+    
+    public function home() 
+    {
+        return view('home', [
+            'guruCount'     => Guru::count(),
+            'jumlahSiswa' => Siswa_1::count() + Siswa_2::count() + Siswa_3::count() + Siswa_4::count() + Siswa_5::count() + Siswa_6::count(),
+            'jumlahPrestasi' => Prestasi::count(),
+            'prestasiList' => Prestasi::latest()->take(5)->get(),
+            'beritaList' => Berita::latest()->take(3)->get(),
+        ]);
+    }
+
 }
