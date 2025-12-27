@@ -47,7 +47,7 @@ class DashboardController extends Controller
             'tahun'          => $tahun,
             'siswaChart'     => $siswaChart,
             'kategoriChart'  => $kategoriChart,
-            'siswaCount'     => array_sum($siswaChart),
+            'siswaCount'     => Siswa_1::count() + Siswa_2::count() + Siswa_3::count() + Siswa_4::count() + Siswa_5::count() + Siswa_6::count(),
             'guruCount'      => Guru::count(),
             'ekstraCount'    => Ekstrakulikuler::count(),
             'prestasiCount'  => Prestasi::count(),
