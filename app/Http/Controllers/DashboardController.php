@@ -19,52 +19,57 @@ use Carbon\Carbon;
 class DashboardController extends Controller
 {
     public function index(Request $request)
-    {
-        $tahun = $request->get('tahun', date('Y'));
+{
+    $tahun = $request->get('tahun', date('Y'));
+    $kelas = $request->get('kelas', 'siswa_1'); // default siswa_1
 
-        $siswaTables = [
-            'siswa_1',
-            'siswa_2',
-            'siswa_3',
-            'siswa_4',
-            'siswa_5',
-            'siswa_6',
-        ];
+    // whitelist tabel (AMAN)
+    $allowedTables = [
+        'siswa_1',
+        'siswa_2',
+        'siswa_3',
+        'siswa_4',
+        'siswa_5',
+        'siswa_6',
+    ];
 
-        // Siapkan array 12 bulan
-        $siswaPerBulan = array_fill(1, 12, 0);
-
-        foreach ($siswaTables as $table) {
-            $data = DB::table($table)
-                ->select(
-                    DB::raw('MONTH(tanggal_masuk) as bulan'),
-                    DB::raw('COUNT(*) as total')
-                )
-                ->whereYear('tanggal_masuk', $tahun)
-                ->groupBy('bulan')
-                ->pluck('total', 'bulan');
-
-            foreach ($data as $bulan => $total) {
-                $siswaPerBulan[$bulan] += $total;
-            }
-        }
-
-        // Rapikan jadi index 0–11 (Jan–Des)
-        $siswaChart = [];
-        for ($i = 1; $i <= 12; $i++) {
-            $siswaChart[] = $siswaPerBulan[$i];
-        }
-        
-        return view('admin.dashboard', [
-            'tahun'      => $tahun,
-            'siswaChart' => $siswaChart,
-            'siswaCount' => array_sum($siswaChart),
-            'guruCount'     => Guru::count(),
-            'ekstraCount'   => Ekstrakulikuler::count(),
-            'prestasiCount' => Prestasi::count(),
-        ]);
-        
+    if (!in_array($kelas, $allowedTables)) {
+        abort(403);
     }
+
+    // Siapkan 12 bulan
+    $siswaPerBulan = array_fill(1, 12, 0);
+
+    $data = DB::table($kelas)
+        ->select(
+            DB::raw('MONTH(tanggal_masuk) as bulan'),
+            DB::raw('COUNT(*) as total')
+        )
+        ->whereYear('tanggal_masuk', $tahun)
+        ->groupBy('bulan')
+        ->pluck('total', 'bulan');
+
+    foreach ($data as $bulan => $total) {
+        $siswaPerBulan[$bulan] = $total;
+    }
+
+    // Rapikan ke array index 0–11
+    $siswaChart = [];
+    for ($i = 1; $i <= 12; $i++) {
+        $siswaChart[] = $siswaPerBulan[$i];
+    }
+
+    return view('admin.dashboard', [
+        'tahun'        => $tahun,
+        'kelas'        => $kelas,
+        'siswaChart'   => $siswaChart,
+        'siswaCount'   => array_sum($siswaChart),
+        'guruCount'    => Guru::count(),
+        'ekstraCount'  => Ekstrakulikuler::count(),
+        'prestasiCount'=> Prestasi::count(),
+    ]);
+}
+
     
     public function home() 
     {

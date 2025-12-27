@@ -97,8 +97,20 @@
                         
                     </div>
 
-                    <!-- Dropdown Tahun -->
-                    <form method="GET">
+                    <form method="GET" class="d-flex gap-2">
+                        <!-- Dropdown Kelas -->
+                        <select name="kelas"
+                                class="form-select form-select-sm"
+                                onchange="this.form.submit()">
+                            @for ($i = 1; $i <= 6; $i++)
+                                <option value="siswa_{{ $i }}"
+                                    {{ $kelas == 'siswa_'.$i ? 'selected' : '' }}>
+                                    Siswa {{ $i }}
+                                </option>
+                            @endfor
+                        </select>
+
+                        <!-- Dropdown Tahun -->
                         <select name="tahun"
                                 class="form-select form-select-sm"
                                 onchange="this.form.submit()">
@@ -109,6 +121,7 @@
                             @endfor
                         </select>
                     </form>
+
                 </div>
 
                 <!-- Body -->
@@ -194,7 +207,7 @@
         },
 
         title: {
-            text: 'Jumlah Siswa Tahun {{ $tahun }}',
+             text: 'JUMLAH {{ strtoupper(str_replace("_", " Kelas ", $kelas)) }} TAHUN {{ $tahun }}',
             align: 'left',
             style: {
                 fontSize: '16px',
