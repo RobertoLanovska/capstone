@@ -6,8 +6,8 @@
         <h1 class="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow-md">
             Selamat Datang
         </h1>
-        <h2 class="text-2xl md:text-4xl font-semibold drop-shadow-md">
-            di MI Nahdlatul Ummah Golokan
+        <h2 class="ext-3xl md:text-5xl font-extrabold leading-tight drop-shadow-md">
+            Di MI Nahdlatul Ummah Golokan
         </h2>
     </div>
     <!-- Container putih di bawah -->
