@@ -50,8 +50,8 @@
                     <input type="text"
                         name="nisn"
                         class="form-control @error('nisn') is-invalid @enderror"
-                        value="{{ old('nisn', $siswa_1->nisn) }}"
-                        required>
+                        value="{{ old('nisn', $siswa_1->nisn) }}" required inputmode="numeric" pattern="[0-9]*"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                     @error('nisn')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -102,8 +102,8 @@
                     <input type="text"
                         name="telepon"
                         class="form-control @error('telepon') is-invalid @enderror"
-                        value="{{ old('telepon', $siswa_1->telepon) }}"
-                        required>
+                        value="{{ old('telepon', $siswa_1->telepon) }}" required inputmode="numeric" pattern="[0-9]*"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                     @error('telepon')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

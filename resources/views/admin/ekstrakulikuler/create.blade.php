@@ -74,7 +74,7 @@
                        name="foto"
                        class="form-control @error('foto') is-invalid @enderror">
                 <small class="text-muted">
-                    Format: JPG, PNG (max 2MB)
+                    Format: JPG, PNG (max 10MB)
                 </small>
                 @error('foto')
                     <div class="invalid-feedback">{{ $message }}</div>

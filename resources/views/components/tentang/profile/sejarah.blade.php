@@ -38,7 +38,7 @@
                 <li><strong>Status Sekolah</strong> : Swasta</li>
                 <li><strong>Jenjang Pendidikan</strong> : Madrasah Ibtidaiyah (MI)</li>
                 <li><strong>Tahun Berdiri</strong> : 1990</li>
-                <li><strong>Tokoh Pendiri</strong> : Bapak Milhan Noor, Bapak Mat Aqib, dan Bapak H. Kastar</li>
+                <li><strong>Tokoh Pendiri</strong> : Bapak Milhan Noor, Bapak Mat Aqib, dan Bapak H. Mukhtar</li>
                 <li><strong>Alamat</strong> : Jl. Lapangan No. 01, Desa Golokan, Kecamatan Sidayu</li>
             </ul>
         </div>

@@ -38,7 +38,7 @@ class SiswaController extends Controller
             'alamat' => 'required',
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|regex:/^[0-9]+$/|digits_between:10,15',
             'tanggal_masuk' => 'required|date',
         ]);
 
@@ -66,7 +66,7 @@ class SiswaController extends Controller
             'alamat' => 'required',
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|regex:/^[0-9]+$/|digits_between:10,15',
             'tanggal_masuk' => 'required|date',
         ]);
 
@@ -110,7 +110,7 @@ class SiswaController extends Controller
             'alamat' => 'required',
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|regex:/^[0-9]+$/|digits_between:10,15',
             'tanggal_masuk' => 'required|date',
         ]);
 
@@ -138,7 +138,7 @@ class SiswaController extends Controller
             'alamat' => 'required',
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|regex:/^[0-9]+$/|digits_between:10,15',
             'tanggal_masuk' => 'required|date',
         ]);
 
@@ -181,7 +181,7 @@ class SiswaController extends Controller
             'alamat' => 'required',
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|regex:/^[0-9]+$/|digits_between:10,15',
             'tanggal_masuk' => 'required|date',
         ]);
 
@@ -209,7 +209,7 @@ class SiswaController extends Controller
             'alamat' => 'required',
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|regex:/^[0-9]+$/|digits_between:10,15',
             'tanggal_masuk' => 'required|date',
         ]);
 
@@ -252,7 +252,7 @@ class SiswaController extends Controller
             'alamat' => 'required',
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|regex:/^[0-9]+$/|digits_between:10,15',
             'tanggal_masuk' => 'required|date',
             
         ]);
@@ -281,7 +281,7 @@ class SiswaController extends Controller
             'alamat' => 'required',
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|regex:/^[0-9]+$/|digits_between:10,15',
             'tanggal_masuk' => 'required|date',
         ]);
 
@@ -324,7 +324,7 @@ class SiswaController extends Controller
             'alamat' => 'required',
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|regex:/^[0-9]+$/|digits_between:10,15',
             'tanggal_masuk' => 'required|date',
         ]);
 
@@ -352,7 +352,7 @@ class SiswaController extends Controller
             'alamat' => 'required',
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|regex:/^[0-9]+$/|digits_between:10,15',
             'tanggal_masuk' => 'required|date',
         ]);
 
@@ -395,7 +395,7 @@ class SiswaController extends Controller
             'alamat' => 'required',
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|regex:/^[0-9]+$/|digits_between:10,15',
             'tanggal_masuk' => 'required|date',
         ]);
 
@@ -423,7 +423,7 @@ class SiswaController extends Controller
             'alamat' => 'required',
             'tanggal_lahir' => 'required|date',
             'wali_murid' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|regex:/^[0-9]+$/|digits_between:10,15',
             'tanggal_masuk' => 'required|date',
         ]);
 

@@ -111,9 +111,12 @@
 
               <ul
                 class="submenu {{ request()->is('fotosdm') || request()->is('guru') || request()->is('karyawan') ? 'submenu-open' : '' }}">
-
+                <li class="submenu-item {{ request()->is('fotosdm') ? 'active' : '' }}">
+                  <a href="/fotosdm" class="submenu-link">
+                    Foto SDM
+                  </a>
+                </li>
                 
-
                 <li class="submenu-item {{ request()->is('guru') ? 'active' : '' }}">
                   <a href="/guru" class="submenu-link">
                     Guru
@@ -169,9 +172,8 @@
                 <span>PPDB</span>
               </a>
             </li>
-
             <!-- Home with Submenu -->
-            <li class="sidebar-item has-sub {{ request()->is('prestasi-home', 'berita-home') ? 'active' : '' }}">
+            <!-- <li class="sidebar-item has-sub {{ request()->is('prestasi-home', 'berita-home') ? 'active' : '' }}">
               <a href="#" class="sidebar-link">
                 <i class="bi bi-grid-fill"></i>
                 <span>Manajemen Konten</span>
@@ -183,14 +185,8 @@
                 <li class="submenu-item {{ request()->is('berita-home') ? 'active' : '' }}">
                   <a href="/berita-home" class="submenu-link">Berita Home</a>
                 </li>
-                <li class="submenu-item {{ request()->is('fotosdm') ? 'active' : '' }}">
-                  <a href="/fotosdm" class="submenu-link">
-                    Foto SDM
-                  </a>
-                </li>
               </ul>
-            </li>
-
+            </li> -->
             <!-- Logout -->
             <li class="sidebar-item">
               <a href="/logout" class="sidebar-link"

@@ -51,8 +51,8 @@
                         name="nisn"
                         class="form-control @error('nisn') is-invalid @enderror"
                         placeholder="Nomor Induk Siswa Nasional"
-                        value="{{ old('nisn') }}"
-                        required>
+                        value="{{ old('nisn') }}"required inputmode="numeric" pattern="[0-9]*"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                     @error('nisn')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -106,8 +106,8 @@
                         name="telepon"
                         class="form-control @error('telepon') is-invalid @enderror"
                         placeholder="08xxxxxxxxxx"
-                        value="{{ old('telepon') }}"
-                        required>
+                        value="{{ old('telepon') }}"required inputmode="numeric" pattern="[0-9]*"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                     @error('telepon')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

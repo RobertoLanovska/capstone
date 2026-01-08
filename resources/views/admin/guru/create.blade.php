@@ -82,8 +82,8 @@
                         name="telepon"
                         class="form-control @error('telepon') is-invalid @enderror"
                         placeholder="08xxxxxxxxxx"
-                        value="{{ old('telepon') }}"
-                        required>
+                        value="{{ old('telepon') }}" required inputmode="numeric" pattern="[0-9]*"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                     @error('telepon')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -95,7 +95,7 @@
                     <input type="file"
                         name="profile"
                         class="form-control @error('profile') is-invalid @enderror">
-                    <small class="text-muted">Format: JPG, PNG (max 2MB)</small>
+                    <small class="text-muted">Format: JPG, PNG (max 10MB)</small>
                     @error('profile')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

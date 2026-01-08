@@ -25,7 +25,7 @@ class KaryawanController extends Controller
             'nama' => 'required',
             'jabatan' => 'required',
             'alamat' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|regex:/^[0-9]+$/|digits_between:10,15',
             'profile' => 'required|image|mimes:jpg,jpeg,png|max:10048',
         ]);
 
@@ -59,7 +59,7 @@ class KaryawanController extends Controller
             'nama' => 'required',
             'jabatan' => 'required',
             'alamat' => 'required',
-            'telepon' => 'required',
+            'telepon' => 'required|regex:/^[0-9]+$/|digits_between:10,15',
             'profile' => 'nullable|image|mimes:jpg,jpeg,png|max:10048',
         ]);
 

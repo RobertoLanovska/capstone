@@ -76,8 +76,8 @@
                     <input type="text"
                         name="telepon"
                         class="form-control @error('telepon') is-invalid @enderror"
-                        value="{{ old('telepon', $guru->telepon) }}"
-                        required>
+                        value="{{ old('telepon', $guru->telepon) }}" required inputmode="numeric" pattern="[0-9]*"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                     @error('telepon')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
