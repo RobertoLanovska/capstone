@@ -86,11 +86,11 @@
       </button>
 
       <!-- Link -->
-      <div class="text-center">
+      <!-- <div class="text-center">
         <a href="#" class="text-sm text-gray-500 hover:text-sky-600">
           Ubah Password
         </a>
-      </div>
+      </div> -->
 
     </form>
   </div>
