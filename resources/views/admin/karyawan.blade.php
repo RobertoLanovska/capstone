@@ -51,7 +51,7 @@
                 <tr>
                     <td>
                         <img src="{{ asset('storage/'.$item->profile) }}"
-                             width="60" class="rounded">
+                            width="60" class="rounded">
                     </td>
                     <td>{{ $item->nama }}</td>
                     <td>{{ $item->jabatan }}</td>
@@ -59,7 +59,7 @@
                     <td>{{ $item->telepon }}</td>
                     <td>
                         <a href="{{ route('karyawan.edit', $item->id) }}"
-                           class="btn btn-sm btn-warning">Edit</a>
+                            class="btn btn-sm btn-warning">Edit</a>
 
                         <button class="btn btn-sm btn-danger"
                                     onclick="confirmDelete({{ $item->id }})">

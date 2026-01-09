@@ -33,7 +33,6 @@
                     onkeyup="searchTable()">
 
                 </div>
-              
             </div>
             <table class="table table-striped" id="accountTable">
                 <thead>
@@ -49,14 +48,13 @@
                 <tr>
                     <td>
                         <img src="{{ asset('storage/'.$item->foto) }}"
-                             width="60" class="rounded">
+                            width="60" class="rounded">
                     </td>
                     <td>{{ $item->nama }}</td>
                     <td>{{ $item->jadwal }}</td>
-   
                     <td>
                         <a href="{{ route('ekstrakulikuler.edit', $item->id) }}"
-                           class="btn btn-sm btn-warning">Edit</a>
+                            class="btn btn-sm btn-warning">Edit</a>
 
                         <button class="btn btn-sm btn-danger"
                                     onclick="confirmDelete({{ $item->id }})">

@@ -17,12 +17,9 @@
             </ol>
         </nav>
     </div>
-
     <!-- <a href="{{ route('fotosdm.create') }}" class="btn btn-primary mb-3">
         + Tambah Foto SDM
     </a> -->
-    
-
     <div class="card">
         <div class="card-body">
             <table class="table table-striped" id="accountTable">
@@ -49,7 +46,7 @@
                         <td>{{ $item->deskripsi }}</td>
                         <td>
                             <a href="{{ route('fotosdm.edit', $item->id) }}"
-                               class="btn btn-sm btn-warning">
+                                class="btn btn-sm btn-warning">
                                 Edit
                             </a>
 
